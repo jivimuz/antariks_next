@@ -515,11 +515,18 @@ const Header = () => {
             </a>
           ))}
           <a
-            href="#contact"
+            href="/chat"
             className="bg-emerald-600 text-white py-3 px-6 rounded-full font-medium text-lg"
             onClick={() => setIsMenuOpen(false)}
           >
             {t.contactCta}
+          </a>
+          <a
+            href="/cp"
+            className="bg-blue-600 text-white py-3 px-6 rounded-full font-medium text-lg"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Company Profile
           </a>
            
           {/* Language Toggle Mobile */}
