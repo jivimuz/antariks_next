@@ -3,6 +3,19 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+    --font-sans: "Inter", sans-serif;
+
+  --emerald-50: #ecfdf5;
+  --emerald-100: #d1fae5;
+  --emerald-200: #a7f3d0;
+  --emerald-300: #6ee7b7;
+  --emerald-400: #34d399;
+  --emerald-500: #10b981;
+  --emerald-600: #059669;
+  --emerald-700: #047857;
+  --emerald-800: #065f46;
+  --emerald-900: #064e3b;
+  --emerald-950: #022c22;
 }
 
 @theme inline {
@@ -24,3 +37,117 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* ==========================================
+   Global reset & font
+========================================== */
+body {
+  font-family: var(--font-sans);
+}
+
+/* ==========================================
+   Utility Classes (mirip Tailwind)
+========================================== */
+
+/* Text Colors */
+.text-emerald-500 { color: var(--emerald-500); }
+.text-emerald-400 { color: var(--emerald-400); }
+
+/* Background Colors */
+.bg-emerald-500 { background-color: var(--emerald-500); }
+.bg-emerald-400 { background-color: var(--emerald-400); }
+.bg-emerald-600 { background-color: var(--emerald-600); }
+
+/* Hover variants */
+.hover\:bg-emerald-600:hover { background-color: var(--emerald-600); }
+.hover\:bg-emerald-500:hover { background-color: var(--emerald-500); }
+
+/* Border Colors */
+.border-emerald-500 { border-color: var(--emerald-500); }
+
+/* ==========================================
+   Extra (Shadow & Rounded)
+========================================== */
+.shadow-emerald {
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+}
+
+.rounded-full { border-radius: 9999px; }
+  svg {
+            max-width: 100%; 
+            height: auto;
+            /* Glow statis warna emas */
+            filter: drop-shadow(0 0 25px rgba(255, 215, 100, 0.25));
+        }
+
+        /* Styling untuk Ikon SVG Kustom */
+        .logo-icon {
+            fill: url(#logoGradient); /* Menggunakan gradient yang sama dengan teks */
+            
+            margin-top:2px;
+            opacity: 0;
+            animation: revealIcon 2s 0.2s ease-out forwards; /* Muncul pertama */
+        }
+
+        /* Styling untuk semua teks logo */
+        .logo-text {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 80px;
+            font-weight: 700; 
+            letter-spacing: 15px;
+            fill: url(#logoGradient); /* Menggunakan gradient hijau */
+            text-transform: uppercase;
+            text-anchor: middle;
+            /* Animasi reveal yang unik */
+            opacity: 0; 
+            animation: revealLogo 3s 0.5s ease-out forwards; /* Sedikit delay */
+        }
+        
+        .tagline {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            fill: #B08F3A; /* Warna emas/perunggu untuk tagline */
+            letter-spacing: 10px;
+            text-transform: uppercase;
+            text-anchor: middle;
+            /* Animasi reveal dengan sedikit delay */
+            opacity: 0; 
+            animation: revealTagline 3s 1s ease-out forwards; /* Delay lebih lama */
+        }
+
+        /* Animasi "reveal" untuk Ikon */
+        @keyframes revealIcon {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Animasi "reveal" untuk logo utama */
+        @keyframes revealLogo {
+            from {
+                letter-spacing: 5px; /* Mulai dari spasi yang lebih rapat */
+                opacity: 0;
+            }
+            to {
+                letter-spacing: 15px; /* Mengembang ke spasi normal */
+                opacity: 1;
+            }
+        }
+        
+        /* Animasi "reveal" untuk tagline */
+        @keyframes revealTagline {
+            from {
+                letter-spacing: 3px; /* Mulai dari spasi yang lebih rapat */
+                opacity: 0;
+            }
+            to {
+                letter-spacing: 10px; /* Mengembang ke spasi normal */
+                opacity: 1;
+            }
+        }
