@@ -151,3 +151,18 @@ body {
                 opacity: 1;
             }
         }
+
+        .slide-scaler {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* SCALE AUTOMATIS HP */
+@media (max-width: 640px) {
+  .slide-scaler > * {
+    transform: scale(0.55);
+    transform-origin: top center;
+  }
+}

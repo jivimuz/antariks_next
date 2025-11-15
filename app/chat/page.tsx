@@ -81,7 +81,7 @@ const allContent = {
 };
 
 // -- Context Bahasa --
-const LangContext = createContext();
+const LangContext = createContext({ lang: "en" as "en" | "id", setLang: (p0: "en" | "id") => {}, t: allContent.en });
 
 // -- Komponen Header --
 const Header = () => {
@@ -157,7 +157,7 @@ const Header = () => {
 };
 
 // -- Komponen Modal Formulir Lead --
-const LeadModal = ({ isOpen, onClose, needsSummary }) => {
+const LeadModal = ({ isOpen, onClose, needsSummary }: { isOpen: boolean; onClose: () => void; needsSummary: string | null }) => {
   const { t } = useContext(LangContext);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -171,7 +171,7 @@ const LeadModal = ({ isOpen, onClose, needsSummary }) => {
     setNeeds(needsSummary);
   }, [needsSummary]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     setStatus("loading");
     setResponseMessage("");
@@ -308,8 +308,7 @@ const LeadModal = ({ isOpen, onClose, needsSummary }) => {
             </label>
             <textarea
               id="form-needs"
-              rows="4"
-              value={needs}
+              rows={4}
               onChange={(e) => setNeeds(e.target.value)} // Biarkan user mengedit jika perlu
               className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500"
               readOnly // Atau biarkan 'readonly' jika Anda mau
@@ -341,15 +340,18 @@ const LeadModal = ({ isOpen, onClose, needsSummary }) => {
 };
 
 // -- Komponen Chatbot Utama --
+type ChatMessage = { type: "bot" | "user" | "confirmation"; text: string };
+type ChatHistoryEntry = { role: "model" | "user"; parts: { text: string }[] };
+
 const Chatbot = () => {
   const { lang, t } = useContext(LangContext);
-  const [chatHistory, setChatHistory] = useState([]); // Untuk API
-  const [chatMessages, setChatMessages] = useState([]); // Untuk UI
-  const [chatInput, setChatInput] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [pendingFormSummary, setPendingFormSummary] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const chatWindowRef = useRef(null);
+  const [chatHistory, setChatHistory] = useState<ChatHistoryEntry[]>([]); // Untuk API
+  const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]); // Untuk UI
+  const [chatInput, setChatInput] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [pendingFormSummary, setPendingFormSummary] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const chatWindowRef = useRef<HTMLDivElement | null>(null);
 
   // Efek untuk inisialisasi chat saat bahasa berubah
   useEffect(() => {
@@ -398,7 +400,7 @@ const Chatbot = () => {
     `;
   };
 
-  const callGeminiAPI = async (currentHistory) => {
+  const callGeminiAPI = async (currentHistory: { role: string; parts: { text: string; }[]; }[]) => {
        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyC2385GhXMYnmriIBZw_iXLaB-T5b5ecNs`;
 
 
@@ -446,8 +448,8 @@ const Chatbot = () => {
       const data = JSON.parse(jsonText);
 
       // Tambahkan balasan bot ke state
-      const botMsg = { type: "bot", text: data.response };
-      const botHistoryEntry = {
+      const botMsg: ChatMessage = { type: "bot", text: data.response };
+      const botHistoryEntry: ChatHistoryEntry = {
         role: "model",
         parts: [{ text: data.response }],
       };
@@ -455,7 +457,7 @@ const Chatbot = () => {
 
       if (data.triggerForm) {
         setPendingFormSummary(data.summary);
-        const confirmMsg = {
+        const confirmMsg: ChatMessage = {
           type: "confirmation",
           text: t.chatbot.confirmation.prompt,
         };
@@ -477,7 +479,7 @@ const Chatbot = () => {
     }
   };
 
-  const handleChatSubmit = async (e) => {
+  const handleChatSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     const prompt = chatInput.trim();
     if (!prompt) return;
@@ -489,8 +491,8 @@ const Chatbot = () => {
     setChatInput("");
     setIsLoading(true);
 
-    const userMsg = { type: "user", text: prompt };
-    const userHistoryEntry = { role: "user", parts: [{ text: prompt }] };
+    const userMsg: ChatMessage = { type: "user", text: prompt };
+    const userHistoryEntry: ChatHistoryEntry = { role: "user", parts: [{ text: prompt }] };
 
     setChatMessages((prev) => [...prev, userMsg]);
     const updatedHistory = [...chatHistory, userHistoryEntry];
@@ -499,7 +501,7 @@ const Chatbot = () => {
     await callGeminiAPI(updatedHistory);
   };
 
-  const handleConfirmationClick = (isYes) => {
+  const handleConfirmationClick = (isYes: boolean) => {
     // Hapus pesan konfirmasi dari UI
     setChatMessages((prev) =>
       prev.filter((msg) => msg.type !== "confirmation")
@@ -508,11 +510,11 @@ const Chatbot = () => {
     if (isYes) {
       setIsModalOpen(true);
     } else {
-      const followUpMsg = {
+      const followUpMsg: ChatMessage = {
         type: "bot",
         text: t.chatbot.confirmation.followUp,
       };
-      const followUpHistory = {
+      const followUpHistory: ChatHistoryEntry = {
         role: "model",
         parts: [{ text: t.chatbot.confirmation.followUp }],
       };
@@ -679,8 +681,8 @@ const Footer = () => {
 
 // -- Komponen Halaman Utama --
 export default function ChatbotPage() {
-  const [lang, setLang] = useState("en");
-  const t = allContent[lang];
+  const [lang, setLang] = useState<"en" | "id">("en");
+  const t = allContent[lang as keyof typeof allContent];
 
   return (
     <LangContext.Provider value={{ lang, setLang, t }}>
@@ -733,8 +735,8 @@ export default function ChatbotPage() {
         <main className="pt-32 pb-16">
           <Chatbot />
         </main>
-        <Footer />
       </div>
+        <Footer />
     </LangContext.Provider>
   );
 }

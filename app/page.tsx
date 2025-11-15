@@ -390,7 +390,7 @@ const allContent = {
 };
 
 // -- Context Bahasa --
-const LangContext = createContext();
+const LangContext = createContext({ lang: "en" as 'id' | 'en', setLang: (p0: 'id' | 'en') => {}, t: allContent.en });
 
 // -- Komponen Header & Navigasi --
 const Header = () => {
@@ -475,6 +475,12 @@ const Header = () => {
           >
             {t.contactCta}
           </a>
+          <a
+            href="/cp"
+            className="bg-blue-600 text-white py-2 px-5 rounded-full font-medium shadow-md shadow-green-600/30 transition-all duration-300 hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/50 hover:-translate-y-1"
+          >
+            Company Profile
+          </a>
         </div>
 
         {/* Tombol Menu Mobile */}
@@ -515,6 +521,7 @@ const Header = () => {
           >
             {t.contactCta}
           </a>
+           
           {/* Language Toggle Mobile */}
           <button
             onClick={toggleLang}
@@ -558,7 +565,7 @@ const Hero = () => {
   useEffect(() => {
   let index = 0;
   let isDeleting = false;
-  let timeoutId;
+  let timeoutId: string | number | NodeJS.Timeout | undefined;
 
     const type = () => {
       const currentText = textToType.substring(0, index);
@@ -627,13 +634,13 @@ const Hero = () => {
         <span className="absolute text-green-500 top-1/4 left-3/4 text-xl animate-float-delay-1">
           &#123;...&#125;
         </span>
-        <span className="absolute text-green-500 top-2/3 left-1/2 text-3xl animate-float-delay-2">
+        <span className="absolute text-green-500 top-1/3 left-2/3 text-3xl animate-float-delay-2">
           [ ]
         </span>
-        <span className="absolute text-green-500 top-3/4 left-1/2 text-lg animate-float">
+        <span className="absolute text-green-500 top-3/4 left-2/3 text-lg animate-float">
           0101
         </span>
-        <span className="absolute text-green-500 top-1/3 left-1/4 text-2xl animate-float-delay-1">
+        <span className="absolute text-green-500 top-1/3 left-3/4 text-2xl animate-float-delay-1">
           const
         </span>
       </div>
@@ -650,12 +657,22 @@ const Hero = () => {
         <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-xl mx-auto">
           {t.hero.subtitle}
         </p>
-        <a
-          href="/chat"
-          className="bg-emerald-600 text-white py-3 px-8 rounded-full text-lg font-semibold shadow-lg shadow-green-600/30 transition-all duration-300 hover:bg-emerald-500 hover:shadow-xl hover:shadow-green-500/50 hover:-translate-y-1 transform"
-        >
-          {t.hero.cta}
-        </a>
+      <div className="flex flex-col md:flex-row w-full">
+  <a
+    href="/chat"
+    className="bg-emerald-600 m-1 w-full text-white py-3 px-8 rounded-full text-lg font-semibold shadow-lg shadow-green-600/30 transition-all duration-300 hover:bg-emerald-500 hover:shadow-xl hover:shadow-green-500/50 hover:-translate-y-1 transform"
+  >
+    {t.hero.cta}
+  </a>
+
+  <a
+    href="/cp"
+    className="bg-blue-600 m-1 w-full text-white py-3 px-8 rounded-full text-lg font-semibold shadow-lg shadow-green-600/30 transition-all duration-300 hover:bg-blue-500 hover:shadow-xl hover:shadow-green-500/50 hover:-translate-y-1 transform"
+  >
+    Company Profile
+  </a>
+</div>
+
       </div>
     </section>
   </>
@@ -782,7 +799,7 @@ const ProductSlider = () => {
     );
   };
 
-  const goToSlide = (index) => {
+  const goToSlide = (index: React.SetStateAction<number>) => {
     setCurrentIndex(index);
   };
 
@@ -1102,7 +1119,7 @@ const Contact = () => {
   const [status, setStatus] = useState("idle");
   const [responseMessage, setResponseMessage] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     setStatus("loading");
     setResponseMessage("");
@@ -1297,7 +1314,7 @@ const Footer = () => {
 
 // -- Komponen Utama App --
 export default function App() {
-  const [lang, setLang] = useState("en");
+  const [lang, setLang] = useState<'id' | 'en'>("en");
   const t = allContent[lang];
 const [mounted, setMounted] = useState(false);
 
