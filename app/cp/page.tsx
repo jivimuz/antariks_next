@@ -241,7 +241,7 @@ const PresentationControls = ({ current, total, lang, onPrev, onNext, onPrint, o
                     onClick={onNext}
                     disabled={current === total}
                     title={t.nextBtnTitle}
-                    className="bg-[#157557] text-white p-2.5 rounded-md font-bold transition-all hover:bg-[#1c946e] hover:scale-105 disabled:bg-slate-700 disabled:cursor-not-allowed disabled:scale-1100"
+                    className="bg-[#157557] text-white p-2.5 rounded-md font-bold transition-all hover:bg-[#1c946e] hover:scale-105 disabled:bg-slate-700 disabled:cursor-not-allowed disabled:scale-100"
                 >
                     <ArrowRight size={18} />
                 </button>
