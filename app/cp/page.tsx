@@ -367,6 +367,7 @@ export default function App() {
             {/* Penting: Kita merender SEMUA slide, tapi hanya menampilkan yang aktif.
                 Ini penting agar 'window.print()' dapat "melihat" semua slide.
             */}
+    <div className="w-full text-center md:hidden block">No Supported for mobile <br /> (Please turn on desktop mode)</div>
             <div className="w-full flex justify-center slide-scaler">
     <div className="w-full max-w-[1280px] hidden md:block">
             <main className="   relative 
@@ -381,30 +382,28 @@ export default function App() {
                     <BlobEffect />
                     <div className="relative z-10">
                  
-          <svg viewBox="0 0 600 200" width="600"  xmlns="http://www.w3.org/2000/svg">
-        
-            <defs>
-                <linearGradient id="logoGradient">
-                    <stop offset="0%" stopColor="#394531" /> 
-                    <stop offset="50%" stopColor="#69A148" />
-                    <stop offset="100%" stopColor="#394531" /> 
-                </linearGradient>
-            </defs>
-        
-            <g className="logo-icon">
-                <path d="M 280 50 L 300 30 L 320 50" fill="none" stroke="url(#logoGradient)" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
-                
-                <path d="M 290 50 L 300 42 L 310 50" fill="none" stroke="url(#logoGradient)" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
-            </g>
-
-            
-            <text x="50%" y="60%" className="logo-text">ANTARIKS</text>
-            
-            <text x="50%" y="75%" className="tagline">
-                Always be your IT solution
-            </text>
-        
-        </svg> 
+                        <svg viewBox="0 0 600 200" width="600"  xmlns="http://www.w3.org/2000/svg">
+                        
+                            <defs>
+                                <linearGradient id="logoGradient-noanimate">
+                                    <stop offset="0%" stopColor="#394531" /> 
+                                    <stop offset="50%" stopColor="#69A148" />
+                                    <stop offset="100%" stopColor="#394531" /> 
+                                </linearGradient>
+                            </defs>
+                            <g className="logo-icon-noanimate">
+                                <path d="M 280 50 L 300 30 L 320 50" fill="none" stroke="url(#logoGradient-noanimate)" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+                                
+                                <path d="M 290 50 L 300 42 L 310 50" fill="none" stroke="url(#logoGradient-noanimate)" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+                            </g>
+                        
+                            <text x="50%" y="60%" className="logo-text-noanimate">ANTARIKS</text>
+                            
+                            <text x="50%" y="75%" className="tagline-noanimate">
+                                Always be your IT solution
+                            </text>
+                        
+                        </svg> 
                         <div className="inline-block mt-8 px-5 py-2 text-lg text-white border border-[#157557] bg-[rgba(21,117,87,0.2)] rounded-full print:text-black print:border-gray-400 print:bg-gray-100">
                             {t.slide1.tag}
                         </div>
