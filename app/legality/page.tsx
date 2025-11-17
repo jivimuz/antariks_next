@@ -207,7 +207,7 @@ export default function LegalityPage() {
      
       <div className="bg-gray-950 text-gray-200 antialiased font-sans min-h-screen">
         <Header />
-        <main>
+        <main className="mt-10 md:mt-0">
           <LegalityPageContent />
         </main>
         <Footer />

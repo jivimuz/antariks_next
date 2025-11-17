@@ -355,7 +355,7 @@ export default function POSPortfolioPage() {
    
       <div className="bg-gray-950 text-gray-200 antialiased font-sans min-h-screen">
         <Header />
-        <main>
+        <main className="mt-10 md:mt-0">
           <POSPageContent />
         </main>
         <Footer />
