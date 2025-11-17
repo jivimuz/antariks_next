@@ -8,11 +8,11 @@ import React, { createContext, useState, ReactNode } from "react";
 export const allContent = {
   id: {
     navLinks: [
-      { href: "#services", label: "Layanan" },
-      { href: "#products", label: "Produk" },
-      { href: "#about", label: "Tentang Kami" },
-      { href: "#location", label: "Lokasi" },
-      { href: "#testimonials", label: "Testimoni" },
+      { href: "/#services", label: "Layanan" },
+      { href: "/#products", label: "Produk" },
+      { href: "/#about", label: "Tentang Kami" },
+      { href: "/#location", label: "Lokasi" },
+      { href: "/#testimonials", label: "Testimoni" },
     ],
     contactCta: "Konsultasi Sekarang",
     hero: {
@@ -227,11 +227,11 @@ sc5: 'Dan sektor lainnya.',
   // EN
   en: {
     navLinks: [
-      { href: "#services", label: "Services" },
-      { href: "#products", label: "Products" },
-      { href: "#about", label: "About Us" },
-      { href: "#location", label: "Location" },
-      { href: "#testimonials", label: "Testimonials" },
+      { href: "/#services", label: "Services" },
+      { href: "/#products", label: "Products" },
+      { href: "/#about", label: "About Us" },
+      { href: "/#location", label: "Location" },
+      { href: "/#testimonials", label: "Testimonials" },
     ],
     contactCta: "Consult Now",
     hero: {

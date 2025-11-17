@@ -17,7 +17,7 @@ const Header = () => {
       <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
         <a
-          href="/"
+          href="../"
           
         >
           <svg viewBox="0 0 600 200" width="300"  xmlns="http://www.w3.org/2000/svg">
