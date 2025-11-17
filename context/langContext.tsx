@@ -8,11 +8,28 @@ import React, { createContext, useState, ReactNode } from "react";
 export const allContent = {
   id: {
     navLinks: [
-      { href: "/#services", label: "Layanan" },
-      { href: "/#products", label: "Produk" },
-      { href: "/#about", label: "Tentang Kami" },
-      { href: "/#location", label: "Lokasi" },
-      { href: "/#testimonials", label: "Testimoni" },
+      { href: "/#services", label: "Layanan", children: [] },
+      { href: "/aboutus", label: "Tentang Kami", children: [] },
+      { href: "/location", label: "Lokasi", children: [] },
+      { href: "/#products", label: "Portfolio", children: [
+         {
+          label:'ERP',
+          href:'/products/erp',
+        }, {
+          label:'MES',
+          href:'/products/mes',
+        },
+        {
+          label:'Umrah and Hajj',
+          href:'/products/umrah_and_hajj',
+        },
+         {
+          label:'POS',
+          href:'/products/pos',
+        },
+      ] },
+      
+      { href: "/legality", label: "Legalitas", children: [] },
     ],
     contactCta: "Konsultasi Sekarang",
     hero: {
@@ -25,7 +42,7 @@ export const allContent = {
     services: {
       title: "Layanan Unggulan Kami",
       subtitle:
-        "Kami menyediakan solusi teknologi end-to-end untuk mendorong pertumbuhan bisnis Anda.",
+        "Kami menyediakan solusi teknologi end-to-end yang sepenuhnya dapat disesuaikan—dibangun dari awal untuk selaras secara sempurna dengan kebutuhan bisnis Anda.",
       items: [
         {
           title: "Web Development",
@@ -67,8 +84,8 @@ export const allContent = {
     },
     about: {
       title: "Tentang",
-      p1: "Antariks bukan sekadar vendor, kami adalah mitra teknologi Anda.",
-      p2: "Tim kami terdiri dari engineer, desainer, dan strategist.",
+      p1: "Antariks (PT Antariks Global Technology) adalah perusahaan pengembang perangkat lunak berskala global yang berbasis di Indonesia, yang berspesialisasi dalam pengembangan aplikasi modern dan skalabel. Saat ini kami beroperasi dan melayani klien di Indonesia dan Singapura, dengan fokus yang meluas pada pasar internasional yang lebih luas.",
+      p2: "Tim kami terobsesi dengan kode yang bersih dan desain yang ramah.",
       cta: "Mulai Proyek Anda",
     },
     partners: {
@@ -227,11 +244,29 @@ sc5: 'Dan sektor lainnya.',
   // EN
   en: {
     navLinks: [
-      { href: "/#services", label: "Services" },
-      { href: "/#products", label: "Products" },
-      { href: "/#about", label: "About Us" },
-      { href: "/#location", label: "Location" },
-      { href: "/#testimonials", label: "Testimonials" },
+      { href: "/#services", label: "Services", children: [] },
+       { href: "/aboutus", label: "About Us", children: [] },
+      { href: "/location", label: "Location", children: [] },
+      { href: "/#products", label: "Portfolio", children: [
+        {
+          label:'ERP',
+          href:'/products/erp',
+        }, 
+        {
+          label:'MES',
+          href:'/products/mes',
+        },
+        {
+          label:'Umrah and Hajj',
+          href:'/products/umrah_and_hajj',
+        },
+         {
+          label:'POS',
+          href:'/products/pos',
+        },
+      ] },
+     
+      { href: "/legality", label: "Legality", children: [] },
     ],
     contactCta: "Consult Now",
     hero: {
@@ -244,7 +279,7 @@ sc5: 'Dan sektor lainnya.',
     services: {
       title: "Our Featured Services",
       subtitle:
-        "We provide end-to-end technology solutions to grow your business.",
+        "We deliver fully customizable, end-to-end technology solutions — built from scratch to perfectly align with your business needs.",
       items: [
         {
           title: "Web Development",
@@ -286,7 +321,7 @@ sc5: 'Dan sektor lainnya.',
     },
     about: {
       title: "About",
-      p1: "Antariks is your technology partner.",
+      p1: "Antariks (PT Antariks Global Technology) is an Indonesian based global-scale software development company specializing in modern, scalable application development. We currently operate and serve clients in Indonesia and Singapore, with an expanding focus on broader international markets.",
       p2: "Our team is obsessed with clean code and impactful design.",
       cta: "Start Your Project",
     },

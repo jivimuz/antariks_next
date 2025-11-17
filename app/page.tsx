@@ -342,7 +342,7 @@ const TechStack = () => {
     { name: "MySQL", icon: "devicon-mysql-plain text-blue-300" },
     { name: "MS SQL", icon: "devicon-microsoftsqlserver-plain text-red-400" },
     { name: "Oracle", icon: "devicon-oracle-original text-red-500" },
-    { name: "Postman", icon: "devicon-postman-plain text-orange-400" },
+    { name: "Java", icon: "devicon-java-plain text-orange-400" },
     { name: "TypeScript", icon: "devicon-typescript-plain text-blue-400" },
     { name: "Figma", icon: "devicon-figma-plain text-purple-400" },
     { name: "Docker", icon: "devicon-docker-plain text-blue-400" },
@@ -588,69 +588,69 @@ const Partners = () => {
   );
 };
 
-// -- Komponen Testimoni (Slider Sederhana) --
-const TestimonialSlider = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const { lang, t } = useContext(LangContext);
+// // -- Komponen Testimoni (Slider Sederhana) --
+// const TestimonialSlider = () => {
+//   const [currentIndex, setCurrentIndex] = useState(0);
+//   const { lang, t } = useContext(LangContext);
 
-  useEffect(() => {
-    // Auto-play slider
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 5000); // Ganti slide setiap 5 detik
+//   useEffect(() => {
+//     // Auto-play slider
+//     const interval = setInterval(() => {
+//       setCurrentIndex((prevIndex) =>
+//         prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+//       );
+//     }, 5000); // Ganti slide setiap 5 detik
 
-    return () => clearInterval(interval);
-  }, []);
+//     return () => clearInterval(interval);
+//   }, []);
 
-  return (
-    <section id="testimonials" className="py-20 md:py-28 bg-gray-950">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            {t.testimonials.title}
-          </h2>
-          <p className="text-lg text-gray-400">{t.testimonials.subtitle}</p>
-        </div>
-        {/* Penyesuaian responsif: min-h- agar pas di mobile */}
-        <div className="relative max-w-3xl mx-auto min-h-[20rem]">
-          {testimonials.map((item, index) => (
-            <div
-              key={index}
-              className={`absolute w-full transition-opacity duration-1000 ease-in-out ${
-                index === currentIndex ? "opacity-100" : "opacity-0"
-              }`}
-            >
-              {index === currentIndex && (
-                <div className="bg-gray-900 p-8 rounded-xl border border-gray-700 text-center shadow-lg">
-                  <Quote
-                    size={40}
-                    className="text-green-600 mx-auto mb-6"
-                    fill="currentColor"
-                  />
-                  <p className="text-xl italic text-gray-300 mb-6">
-                    "{item.quote[lang]}"
-                  </p>
-                  <h4 className="text-lg font-semibold text-white">
-                    {item.name}
-                  </h4>
-                  <p className="text-green-400">{item.title}</p>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
+//   return (
+//     <section id="testimonials" className="py-20 md:py-28 bg-gray-950">
+//       <div className="container mx-auto px-6">
+//         <div className="text-center mb-16">
+//           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+//             {t.testimonials.title}
+//           </h2>
+//           <p className="text-lg text-gray-400">{t.testimonials.subtitle}</p>
+//         </div>
+//         {/* Penyesuaian responsif: min-h- agar pas di mobile */}
+//         <div className="relative max-w-3xl mx-auto min-h-[20rem]">
+//           {testimonials.map((item, index) => (
+//             <div
+//               key={index}
+//               className={`absolute w-full transition-opacity duration-1000 ease-in-out ${
+//                 index === currentIndex ? "opacity-100" : "opacity-0"
+//               }`}
+//             >
+//               {index === currentIndex && (
+//                 <div className="bg-gray-900 p-8 rounded-xl border border-gray-700 text-center shadow-lg">
+//                   <Quote
+//                     size={40}
+//                     className="text-green-600 mx-auto mb-6"
+//                     fill="currentColor"
+//                   />
+//                   <p className="text-xl italic text-gray-300 mb-6">
+//                     "{item.quote[lang]}"
+//                   </p>
+//                   <h4 className="text-lg font-semibold text-white">
+//                     {item.name}
+//                   </h4>
+//                   <p className="text-green-400">{item.title}</p>
+//                 </div>
+//               )}
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
 
 // -- Komponen Lokasi & Peta --
 const LocationMap = () => {
   const { t } = useContext(LangContext);
   return (
-    <section id="location" className="py-20 md:py-28 bg-gray-900">
+    <section id="location" className="py-20 md:py-28 ">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -962,7 +962,7 @@ if (!mounted) {
           <AboutUs />
           {/* (BARU) Menambahkan Partners */}
           <Partners />
-          <TestimonialSlider />
+          {/* <TestimonialSlider /> */}
           <LocationMap />
           <Contact />
         </main>
