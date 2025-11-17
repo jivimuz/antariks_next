@@ -149,7 +149,7 @@ const LocationPageContent = () => {
               </div>
 
               <a
-                href="https://maps.app.goo.gl/tqJkG2rW6JgG5yN49" // Link Google Maps langsung
+                href="https://maps.app.goo.gl/jnBK65uuQC5DkHo47" // Link Google Maps langsung
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-8 inline-block bg-green-600 text-white py-3 px-8 rounded-full text-lg font-semibold shadow-lg shadow-green-600/30 transition-all duration-300 hover:bg-green-500 hover:shadow-xl hover:shadow-green-500/50 hover:-translate-y-1 transform w-full sm:w-auto text-center"
@@ -168,13 +168,13 @@ const LocationPageContent = () => {
 export default function LocationPage() {
 
   return (
-   
-      <div className="bg-gray-950 text-gray-200 antialiased font-sans min-h-screen">
-        <Header />
-        <main className="mt-10 md:mt-0">
-          <LocationPageContent />
-        </main>
-        <Footer />
-      </div>
+
+    <div className="bg-gray-950 text-gray-200 antialiased font-sans min-h-screen">
+      <Header />
+      <main className="mt-10 md:mt-0">
+        <LocationPageContent />
+      </main>
+      <Footer />
+    </div>
   );
 }
