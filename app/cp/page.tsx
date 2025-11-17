@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 // Impor ikon dari lucide-react (pengganti Font Awesome)
 import {
@@ -20,203 +20,21 @@ import {
     Globe,
     Home
 } from 'lucide-react';
+import LangContext, { allContent } from '@/context/langContext';
+import Header from '@/components/layout/headerComponent';
 
 // Data bahasa disimpan sebagai konstanta di luar komponen
-const languageData = {
-    id: {
-        controls: {
-            prevBtnTitle: "Slide Sebelumnya",
-            nextBtnTitle: "Slide Berikutnya",
-            printBtnText: "Download Profil PDF",
-            printBtnTitle: "Cetak semua slide ke PDF"
-        },
-        slide1: {
-            tag: "Company Profile 2025"
-        },
-        slide2: {
-            title: "Tentang ANTARIKS",
-             p1: "Antariks (PT. Antariks Global Technology) bukan hanya sekadar vendor. Kami adalah mitra teknologi Anda. Didirikan pada tahun 2022 dan menjadi PT di 2025, misi kami adalah menjembatani kesenjangan antara ide bisnis dan realitas digital.",
-            p2: "Tim kami terdiri dari para engineer, desainer, dan ahli strategi yang terobsesi dengan kode yang bersih, desain yang fungsional, dan produk yang berdampak. Kami percaya pada kekuatan teknologi untuk menyelesaikan masalah nyata.",
-        },
-        slide3: {
-            title: "Visi & Misi Kami",
-            visiTitle: "Visi",
-            visiText: "Menjadi penyedia solusi teknologi terdepan yang menghadirkan inovasi efektif, andal, dan berkelanjutan untuk mendukung transformasi digital di berbagai sektor industri.",
-            misiTitle: "Misi",
-            misiItems: [
-                "Mengembangkan produk dan layanan teknologi yang berkualitas tinggi, aman, dan mudah diimplementasikan.",
-                "Memberikan pengalaman layanan yang responsif dan profesional melalui kolaborasi yang transparan dengan setiap klien.",
-                "Mendorong penerapan teknologi modern yang efisien untuk meningkatkan kinerja dan produktivias bisnis.",
-                "Membangun budaya inovatif yang berfokus pada peningkatan kualitas, integritas, dan keberlanjutan.",
-                "Menjadi mitra strategis yang dapat diandalkan dalam perjalanan transformasi digital perusahaan."
-            ]
-        },
-        slide4: {
-            title: "Founder Profile",
-            team1Name: "Jivi Muzaqi Guntur",
-            team1Title: "Founder & CEO",
-            founderSaid: `Saya adalah Founder & CEO PT Antariks. Fokus saya pada pengembangan teknologi, strategi produk, dan memastikan setiap solusi yang kami bangun benar-benar berdampak.
-Di Antariks, saya memimpin arah perusahaan dalam menciptakan platform digital untuk berbagai sektor, mulai dari:`,
-sc1: 'Manufaktur — sistem ERP, MES, dan automasi operasional.',
-sc2: 'Kesehatan — manajemen rumah sakit, klinik, dan dental care.',
-sc3: '  Keuangan &amp; Layanan Publik — sistem informasi terintegrasi dan solusi data-driven.',
-sc4: 'Personalia — platform HRIS dan manajemen perusahaan.',
-sc5: 'Dan sektor lainnya.',
-       
-        },
-        slide5: {
-            title: "Layanan Kami",
-            service1Title: "Web & App Development",
-            service1Text: "Membangun platform digital yang cepat, aman, dan skalabel untuk semua perangkat.",
-            service2Title: "Branding & Desain",
-            service2Text: "Menciptakan identitas brand yang kuat, berkesan, dan kohesif secara visual.",
-            service3Title: "Digital Marketing",
-            service3Text: "Meluncurkan strategi pemasaran berbasis data untuk pertumbuhan bisnis yang terukur."
-        },
-        slide6: {
-    title: "Beberapa Proyek Kami",
-    project1Title: "ERP & MES Manufacturing",
-    project1Desc: "Implementasi sistem ERP dan MES untuk meningkatkan efisiensi produksi dan integrasi operasional di sektor manufaktur.",
-    
-    project2Title: "Hospital & Dental Management System",
-    project2Desc: "Pengembangan sistem manajemen rumah sakit dan klinik gigi dengan fokus pada alur pelayanan, rekam medis, dan automasi administrasi.",
-    
-    project3Title: "Point of Sale (POS)",
-    project3Desc: "Pembuatan sistem POS modern untuk retail dan F&B dengan integrasi inventori, laporan real-time, dan fitur multi-outlet."
-},
-        slide7: {
-            title: "Mengapa Memilih Antariks?",
-            points: [
-                { title: "Inovasi Terdepan", text: "Kami selalu menggunakan teknologi terbaru untuk memberikan solusi terbaik dan relevan.", icon: Star },
-                { title: "Pendekatan Kemitraan", text: "Klien adalah mitra. Kami tumbuh bersama Anda, kesuksesan Anda adalah kesuksesan kami.", icon: Users },
-                { title: "Berbasis Data", text: "Setiap keputusan kreatif dan strategis didukung oleh data yang akurat untuk hasil optimal.", icon: LineChart },
-                { title: "Dukungan Penuh", text: "Tim kami siap membantu Anda 24/7, memastikan semua proyek berjalan lancar tanpa hambatan.", icon: Headset }
-            ]
-        },
-        slide8: {
-            title: "Klien Kami"
-        },
-        slide9: {
-            title: "Mari Terhubung",
-            subtitle: "Siap untuk meluncurkan proyek Anda berikutnya ke level stratosfer?",
-            contactEmail: "antariks.corp@gmail.com",
-            contactPhone: "+62 821 2074 1970",
-            contactWeb: "https://antariks.vercel.app",
-            qrLabel: "Pindai saya" // BARU: Teks untuk
-        }
-    },
-    en: {
-        controls: {
-            prevBtnTitle: "Previous Slide",
-            nextBtnTitle: "Next Slide",
-            printBtnText: "Download PDF Profile",
-            printBtnTitle: "Print all slides to PDF"
-        },
-        slide1: {
-            tag: "Company Profile 2025"
-        },
-        slide2: {
-            title: "About ANTARIKS",
-            p1: "Antariks (PT. Antariks Global Technology) isn't just a vendor. We are your technology partner. Founded in 2022 and become a PT in 2025, our mission is to bridge the gap between business ideas and digital reality.",
-      p2: "Our team consists of engineers, designers, and strategists obsessed with clean code, functional design, and impactful products. We believe in the power of technology to solve real problems.",
-        },
-        slide3: {
-            title: "Our Vision & Mission",
-            visiTitle: "Vision",
-            visiText: "To be a leading technology solutions provider that delivers effective, reliable, and sustainable innovations to support digital transformation across various industrial sectors.",
-            misiTitle: "Mission",
-            misiItems: [
-                "Developing high-quality, secure, and easily implementable technology products and services.",
-                "Providing a responsive and professional service experience through transparent collaboration with every client.",
-                "Encouraging the adoption of efficient modern technologies to enhance business performance and productivity.",
-                "Building an innovative culture focused on quality improvement, integrity, and sustainability.",
-                "Becoming a reliable strategic partner in the company's digital transformation journey."
-            ]
-        },
-        slide4: {
-            title: "Founder Profile",
-            team1Name: "Jivi Muzaqi Guntur",
-            team1Title: "Founder & CEO",
-            founderSaid: `I am the Founder & CEO of PT Antariks. My focus is on technology development, product strategy, and ensuring every solution we build truly impactful.
-At Antariks, I lead the company's direction in creating digital platforms for various sectors, including:`,
-sc1: 'Manufacturing — ERP systems, MES, and operational automation.',
-sc2: 'Healthcare — hospital, clinic, and dental care management.',
-sc3: 'Finance & Public Services — integrated information systems and data-driven solutions.',
-sc4: 'Personnel — HRIS platforms and enterprise management.',
-sc5: 'And other sectors.',
-        },
-        slide5: {
-            title: "Our Services",
-            service1Title: "Web & App Development",
-            service1Text: "Building fast, secure, and scalable digital platforms for all devices.",
-            service2Title: "Branding & Design",
-            service2Text: "Creating strong, memorable, and visually cohesive brand identities.",
-            service3Title: "Digital Marketing",
-            service3Text: "Launching data-driven marketing strategies for measurable business growth."
-        },
-        slide6: {
-            title: "Some of Our Projects",
-           project1Title: "ERP & MES Manufacturing",
-project1Desc: "Implementation of ERP and MES systems to improve production efficiency and operational integration in the manufacturing sector.",
 
-project2Title: "Hospital & Dental Management System",
-project2Desc: "Development of a hospital and dental clinic management system with a focus on service flow, medical records, and administrative automation.",
-
-project3Title: "Point of Sale (POS)",
-project3Desc: "Development of a modern POS system for retail and F&B with inventory integration, real-time reporting, and multi-outlet features."
-        },
-        slide7: {
-            title: "Why Choose Antariks?",
-            points: [
-                { title: "Leading Innovation", text: "We always use the latest technology to provide the best and most relevant solutions.", icon: Star },
-                { title: "Partnership Approach", text: "Clients are partners. We grow with you; your success is our success.", icon: Users },
-                { title: "Data-Driven", text: "Every creative and strategic decision is backed by accurate data for optimal results.", icon: LineChart },
-                { title: "Full Support", text: "Our team is ready to assist you 24/7, ensuring all projects run smoothly without interruption.", icon: Headset }
-            ]
-        },
-        slide8: {
-            title: "Our Clients"
-        },
-        slide9: {
-            title: "Let's Connect",
-            subtitle: "Ready to launch your next project into the stratosphere?",
-              contactEmail: "antariks.corp@gmail.com",
-            contactPhone: "+62 821 2074 1970",
-            contactWeb: "https://antariks.vercel.app",
-            qrLabel: "Scan me" // BARU: Teks untuk
-        }
-    }
-};
 
 const totalSlides = 9;
-
-// Komponen Toggle Bahasa
-const LanguageToggle = ({ lang, onToggle }: { lang: 'id' | 'en'; onToggle: () => void }) => (
-    <div className="flex items-center gap-2.5">
-        <span className="text-sm font-bold text-gray-200 font-sans">ID</span>
-        <label htmlFor="langToggle" className="relative inline-block w-12 h-7 cursor-pointer">
-            <input
-                id="langToggle"
-                type="checkbox"
-                className="opacity-0 w-0 h-0 peer"
-                checked={lang === 'en'}
-                onChange={onToggle}
-            />
-            <span className="absolute top-0 left-0 right-0 bottom-0 bg-slate-600 rounded-full transition-colors peer-focus:ring-2 peer-focus:ring-[#157557]"></span>
-            <span className="absolute left-1 bottom-1 w-5 h-5 bg-white rounded-full transition-transform peer-checked:translate-x-5"></span>
-        </label>
-        <span className="text-sm font-bold text-gray-200 font-sans">EN</span>
-    </div>
-);
-
 // Komponen Kontrol Navigasi
-const PresentationControls = ({ current, total, lang, onPrev, onNext, onPrint, onLangToggle }: { current: number; total: number; lang: 'id' | 'en'; onPrev: () => void; onNext: () => void; onPrint: () => void; onLangToggle: () => void }) => {
-    const t = languageData[lang as keyof typeof languageData].controls;
+const PresentationControls = ({ current, total, lang, onPrev, onNext, onPrint }: { current: number; total: number; lang: 'id' | 'en'; onPrev: () => void; onNext: () => void; onPrint: () => void; }) => {
+  const t = allContent[lang];
 
     return (
         <>
           
-        <div className="flex items-center justify-center flex-wrap gap-4 mb-5 bg-[#0D1126] py-3 px-5 rounded-lg shadow-lg border border-slate-700 print:hidden z-50">
+        <div className="flex items-center justify-center flex-wrap gap-4 mb-5 bg-[#0D1126] py-3 px-5 rounded-lg shadow-lg border border-slate-700 print:hidden z-2">
             {/* Tombol Navigasi */}
              <a
                 href='/'                
@@ -229,7 +47,7 @@ const PresentationControls = ({ current, total, lang, onPrev, onNext, onPrint, o
             <button
                 onClick={onPrev}
                 disabled={current === 1}
-                title={t.prevBtnTitle}
+                title={t.controls.prevBtnTitle}
                 className="bg-[#157557] text-white p-2.5 rounded-md font-bold transition-all hover:bg-[#1c946e] hover:scale-105 disabled:bg-slate-700 disabled:cursor-not-allowed disabled:scale-100"
             >
                 <ArrowLeft size={18} />
@@ -240,25 +58,21 @@ const PresentationControls = ({ current, total, lang, onPrev, onNext, onPrint, o
             <button
                 onClick={onNext}
                 disabled={current === total}
-                title={t.nextBtnTitle}
+                title={t.controls.nextBtnTitle}
                 className="bg-[#157557] text-white p-2.5 rounded-md font-bold transition-all hover:bg-[#1c946e] hover:scale-105 disabled:bg-slate-700 disabled:cursor-not-allowed disabled:scale-100"
             >
                 <ArrowRight size={18} />
             </button>
 
-            {/* Toggle Bahasa */}
-            <div className="mx-2">
-                <LanguageToggle lang={lang} onToggle={onLangToggle} />
-            </div>
-
+        
             {/* Tombol Download */}
             <button
                 onClick={onPrint}
-                title={t.printBtnTitle}
+                title={t.controls.printBtnTitle}
                 className="bg-blue-700 text-white py-2.5 px-4 rounded-md font-bold text-sm transition-all hover:bg-blue-600 hover:scale-105 flex items-center gap-2"
             >
                 <Printer size={16} />
-                <span>{t.printBtnText}</span>
+                <span>{t.controls.printBtnText}</span>
             </button>
         </div>
         </>
@@ -287,10 +101,10 @@ const SlideFooter = () => (
 // Komponen utama Presentasi
 export default function App() {
     const [currentSlide, setCurrentSlide] = useState(1);
-    const [lang, setLang] = useState<'id' | 'en'>('id');
 
     // 't' adalah objek terjemahan berdasarkan state 'lang'
-    const t = languageData[lang];
+      const { t,lang } = useContext(LangContext);
+
 
     // Navigasi Keyboard
     useEffect(() => {
@@ -308,7 +122,6 @@ export default function App() {
     // Fungsi Navigasi
     const handleNext = () => setCurrentSlide(prev => Math.min(prev + 1, totalSlides));
     const handlePrev = () => setCurrentSlide(prev => Math.max(prev - 1, 1));
-    const handleLangToggle = () => setLang(prev => (prev === 'id' ? 'en' : 'id'));
     const handlePrint = () => window.print();
 
     // Kelas dasar untuk semua slide
@@ -349,9 +162,11 @@ export default function App() {
     const slideTitleClasses = "w-full mb-10 text-2xl md:text-4xl font-bold text-white border-l-4 border-[#157557] pl-4 print:text-black print:border-[#157557]";
 
     return (
+        <>
+        <Header />
         <div className="flex flex-col items-center justify-center 
     min-h-screen bg-slate-700 
-    p-2 md:p-5 
+    p-2 md:p-5 mt-20 print:mt-0
     print:bg-white print:p-0">
             <PresentationControls
                 current={currentSlide}
@@ -360,19 +175,18 @@ export default function App() {
                 onPrev={handlePrev}
                 onNext={handleNext}
                 onPrint={handlePrint}
-                onLangToggle={handleLangToggle}
             />
 
             {/* Kontainer untuk semua slide */}
             {/* Penting: Kita merender SEMUA slide, tapi hanya menampilkan yang aktif.
                 Ini penting agar 'window.print()' dapat "melihat" semua slide.
             */}
-    <div className="w-full text-center md:hidden block">No Supported for mobile <br /> (Please turn on desktop mode)</div>
+    <div className="w-full text-center md:hidden block  print:hidden">No Supported for mobile view <br /> (Please turn on desktop mode)</div>
             <div className="w-full flex justify-center slide-scaler">
-    <div className="w-full max-w-[1280px] hidden md:block">
+    <div className=" w-[1280px] hidden md:block print:block">
             <main className="   relative 
-    w-full 
-    max-w-[1280px] 
+     
+    w-[1280px] 
     aspect-video 
     print:w-auto 
     print:h-auto">
@@ -631,5 +445,6 @@ export default function App() {
             </div>
             </div>
         </div>
+        </>
     );
 }

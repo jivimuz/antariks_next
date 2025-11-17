@@ -1,160 +1,18 @@
 "use client"; // Diperlukan untuk hooks
 
+import Footer from "@/components/layout/footerComponent";
+import Header from "@/components/layout/headerComponent";
+import LangContext from "@/context/langContext";
 import React, {
   useState,
   useEffect,
-  createContext,
   useContext,
   useRef,
 } from "react";
 
-// -- Objek Konten Bilingual (Sama seperti di chatbot.html) --
-const allContent = {
-  id: {
-    chatbot: {
-      title: "Asisten AI Antariks",
-      subtitle: "online",
-      placeholder: "Ketik pesan Anda...",
-      welcome:
-        "Halo! Saya asisten AI dari Antariks. Ada yang bisa saya bantu terkait proyek software Anda? (Misal: 'Saya ingin membuat aplikasi mobile?')",
-      confirmation: {
-        prompt:
-          "Apakah Anda tertarik untuk melanjutkan dan mengisi formulir permintaan proyek?",
-        yes: "Ya, Tentu",
-        no: "Tidak, Nanti Saja",
-        followUp: "Baik, ada lagi yang bisa saya bantu?",
-      },
-    },
-    form: {
-      title: "Proyek Baru",
-      subtitle:
-        "Langkah terakhir! Isi data Anda agar tim kami dapat menghubungi Anda.",
-      name: "Nama",
-      namePlaceholder: "John Doe",
-      email: "Email",
-      emailPlaceholder: "anda@email.com",
-      phone: "No. Handphone",
-      phonePlaceholder: "08123456789",
-      needs: "Keperluan (disimpulkan oleh AI)",
-      submit: "Kirim Permintaan",
-      loading: "Mengirim...",
-      success:
-        "Terima kasih! Permintaan Anda telah terkirim. Tim kami akan segera menghubungi Anda.",
-      error: "Gagal mengirim. Silakan coba lagi nanti.",
-      errorEmpty: "Harap isi semua kolom (Nama, Email, HP).",
-    },
-  },
-  en: {
-    chatbot: {
-      title: "Antariks AI Assistant",
-      subtitle: "online",
-      placeholder: "Type your message...",
-      welcome:
-        "Hello! I'm the Antariks AI assistant. How can I help with your software project today? (e.g., 'I want to build a mobile app?')",
-      confirmation: {
-        prompt:
-          "Are you interested in proceeding and filling out a project inquiry form?",
-        yes: "Yes, Sure",
-        no: "No, Not Now",
-        followUp: "Alright, is there anything else I can help you with?",
-      },
-    },
-    form: {
-      title: "New Project Inquiry",
-      subtitle:
-        "One last step! Please fill in your details so our team can contact you.",
-      name: "Name",
-      namePlaceholder: "John Doe",
-      email: "Email",
-      emailPlaceholder: "you@email.com",
-      phone: "Phone Number",
-      phonePlaceholder: "08123456789",
-      needs: "Your Needs (summarized by AI)",
-      submit: "Send Inquiry",
-      loading: "Sending...",
-      success:
-        "Thank you! Your inquiry has been sent. Our team will contact you shortly.",
-      error: "Failed to send. Please try again later.",
-      errorEmpty: "Please fill all fields (Name, Email, Phone).",
-    },
-  },
-};
 
 // -- Context Bahasa --
-const LangContext = createContext({ lang: "en" as "en" | "id", setLang: (p0: "en" | "id") => {}, t: allContent.en });
 
-// -- Komponen Header --
-const Header = () => {
-  const { lang, setLang } = useContext(LangContext);
-
-  const toggleLang = () => {
-    setLang(lang === "id" ? "en" : "id");
-  };
-
-  return (
-    <header className="fixed top-0 left-0 w-full bg-gray-950 bg-opacity-80 backdrop-blur-md z-50 shadow-lg shadow-green-900/10">
-      <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <a
-          href="/"
-          
-        >
-          <svg viewBox="0 0 600 200" width="300"  xmlns="http://www.w3.org/2000/svg">
-        
-            <defs>
-                <linearGradient id="logoGradient">
-                    <stop offset="0%" stopColor="#394531" /> 
-                    <stop offset="50%" stopColor="#69A148" />
-                    <stop offset="100%" stopColor="#394531" /> 
-                </linearGradient>
-            </defs>
-        
-            <g className="logo-icon">
-                <path d="M 280 50 L 300 30 L 320 50" fill="none" stroke="url(#logoGradient)" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
-                
-                <path d="M 290 50 L 300 42 L 310 50" fill="none" stroke="url(#logoGradient)" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
-            </g>
-
-            
-            <text x="50%" y="60%" className="logo-text">ANTARIKS</text>
-            
-            <text x="50%" y="75%" className="tagline">
-                Always be your IT solution
-            </text>
-        
-        </svg>
-        </a>
-       
-        {/* Language Toggle Desktop */}
-        <div className="flex items-center space-x-6">
-           <button className="text-gray-300  text-2xl pointer font-medium py-1 px-2 rounded-md hover:bg-gray-700 transition-colors">
-            Antariks AI Assistant
-        </button>
-<button
-            id="lang-toggle-desktop"
-            onClick={toggleLang}
-            className="text-gray-300 font-medium py-1 px-2 rounded-md hover:bg-gray-700 transition-colors"
-          >
-            <span
-              id="lang-id-desktop"
-              className={lang === "id" ? "text-white font-bold" : "text-gray-500"}
-            >
-              ID
-            </span>
-            <span className="mx-1 text-gray-600">|</span>
-            <span
-              id="lang-en-desktop"
-              className={
-                lang === "en" ? "text-white font-bold" : "text-gray-500"
-              }
-            >
-              EN
-            </span>
-          </button>
-        </div>
-      </nav>
-    </header>
-  );
-};
 
 // -- Komponen Modal Formulir Lead --
 const LeadModal = ({ isOpen, onClose, needsSummary }: { isOpen: boolean; onClose: () => void; needsSummary: string | null }) => {
@@ -618,74 +476,11 @@ const Chatbot = () => {
   );
 };
 
-const Footer = () => {
-  return (
-    <footer className="bg-black py-10">
-      <div className="container mx-auto px-6 text-center text-gray-500">
-        <div className="flex justify-center space-x-6 mb-6">
-                <a
-  href="https://www.instagram.com/antariks.corp/"
-  target="_blank"
-  className="text-gray-400 hover:text-pink-500 transition-colors duration-300"
-  aria-label="Instagram"
->
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="28"
-    height="28"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-    <path d="M16 11.37a4 4 0 1 1-7.99 0 4 4 0 0 1 7.99 0z"></path>
-    <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
-  </svg>
-</a>
-
-          <a
-            href="https://www.linkedin.com/company/antariks/"
-            target="_blank"
-            className="text-gray-400 hover:text-green-400 transition-colors duration-300"
-            aria-label="LinkedIn"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="28"
-              height="28"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path
-                d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
-              ></path>
-              <rect width="4" height="12" x="2" y="9"></rect>
-              <circle cx="4" cy="4" r="2"></circle>
-            </svg>
-          </a>
-        </div>
-        <p className="text-sm">
-          &copy; {new Date().getFullYear()} Antariks. all right reserved
-        </p>
-      </div>
-    </footer>
-  );
-};
-
 // -- Komponen Halaman Utama --
 export default function ChatbotPage() {
-  const [lang, setLang] = useState<"en" | "id">("en");
-  const t = allContent[lang as keyof typeof allContent];
 
   return (
-    <LangContext.Provider value={{ lang, setLang, t }}>
+    <>
       {/* Di Next.js, <Head> biasanya ada di layout.js atau page.js.
         Untuk file tunggal ini, kita akan mengabaikannya, 
         tetapi kita akan menambahkan style global.
@@ -737,6 +532,6 @@ export default function ChatbotPage() {
         </main>
       </div>
         <Footer />
-    </LangContext.Provider>
+    </>
   );
 }
