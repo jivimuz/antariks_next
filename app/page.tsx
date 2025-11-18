@@ -17,6 +17,7 @@ import {
   Database,
   Cloud,
   MapPin,
+  Video,
 } from "lucide-react";
 import LangContext, { allContent } from "@/context/langContext";
 import Header from "@/components/layout/headerComponent";
@@ -549,44 +550,106 @@ const AboutUs = () => {
   );
 };
 
-// (BARU) Komponen Mitra Kami
-const Partners = () => {
+
+// (BARU) Komponen Bagian Video
+const VideoSection = () => {
   const { t } = useContext(LangContext);
-  const logos = t.partners.logos || [];
-  // Duplikat logo untuk efek scroll tak terbatas
-  // const extendedLogos = [...logos, ...logos];
-  const extendedLogos = [...logos];
+
+  // Ganti URL placeholder ini dengan ID video YouTube Anda
+  const videoUrl1 = "https://www.youtube.com/embed/43idhmI-A1A"; // Placeholder 1
+  const videoUrl2 = "https://www.youtube.com/embed/22EPeMJgoZI"; // Placeholder 2
 
   return (
-    <section id="partners" className="py-20 md:py-28 bg-gray-900">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+    <section id="videos" className="py-16 md:py-28 bg-gray-900">
+      <div className="container mx-auto px-6 max-w-6xl">
+        <div className="text-center mb-12 md:mb-16">
+          <Video
+            size={48}
+            className="text-green-500 mx-auto mb-4"
+            strokeWidth={1.5}
+          />
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            {t.partners.title}
+            {t.video.title}
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            {t.partners.subtitle}
+            {t.video.subtitle}
           </p>
         </div>
-      </div>
-      <div className=" scroller-wrapper w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_1rem,_black_calc(100%-1rem),transparent_100%)] items-center justify-center">
-        <ul className="flex items-center justify-center  [&_li]:mx-8  hover:[animation-play-state:paused]">
-        {/* <ul className="flex items-center justify-center  [&_li]:mx-8 animate-infinite-scroll hover:[animation-play-state:paused]"> */}
-          {extendedLogos.map((logo, index) => (
-            <li key={index}>
-              <img
-                src={logo.src}
-                alt={logo.alt}
-                className="max-h-16 w-auto object-contain grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300"
-              />
-            </li>
-          ))}
-        </ul>
-        
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+          {/* Video Kiri */}
+          <div
+            className="relative w-full border border-gray-700 rounded-xl shadow-2xl overflow-hidden"
+            style={{ paddingTop: "56.25%" /* 16:9 Aspect Ratio */ }}
+          >
+            <iframe
+              src={videoUrl1}
+              title="Video 1"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="absolute top-0 left-0 w-full h-full"
+            ></iframe>
+          </div>
+
+          {/* Video Kanan */}
+          <div
+            className="relative w-full border border-gray-700 rounded-xl shadow-2xl overflow-hidden"
+            style={{ paddingTop: "56.25%" /* 16:9 Aspect Ratio */ }}
+          >
+            <iframe
+              src={videoUrl2}
+              title="Video 2"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="absolute top-0 left-0 w-full h-full"
+            ></iframe>
+          </div>
+        </div>
       </div>
     </section>
   );
 };
+
+// (BARU) Komponen Mitra Kami
+// const Partners = () => {
+//   const { t } = useContext(LangContext);
+//   const logos = t.partners.logos || [];
+//   // Duplikat logo untuk efek scroll tak terbatas
+//   // const extendedLogos = [...logos, ...logos];
+//   const extendedLogos = [...logos];
+
+//   return (
+//     <section id="partners" className="py-20 md:py-28 bg-gray-900">
+//       <div className="container mx-auto px-6">
+//         <div className="text-center mb-16">
+//           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+//             {t.partners.title}
+//           </h2>
+//           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+//             {t.partners.subtitle}
+//           </p>
+//         </div>
+//       </div>
+//       <div className=" scroller-wrapper w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_1rem,_black_calc(100%-1rem),transparent_100%)] items-center justify-center">
+//         <ul className="flex items-center justify-center  [&_li]:mx-8  hover:[animation-play-state:paused]">
+//         {/* <ul className="flex items-center justify-center  [&_li]:mx-8 animate-infinite-scroll hover:[animation-play-state:paused]"> */}
+//           {extendedLogos.map((logo, index) => (
+//             <li key={index}>
+//               <img
+//                 src={logo.src}
+//                 alt={logo.alt}
+//                 className="max-h-16 w-auto object-contain grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300"
+//               />
+//             </li>
+//           ))}
+//         </ul>
+        
+//       </div>
+//     </section>
+//   );
+// };
 
 // // -- Komponen Testimoni (Slider Sederhana) --
 // const TestimonialSlider = () => {
@@ -961,7 +1024,8 @@ if (!mounted) {
           <ProductSlider />
           <AboutUs />
           {/* (BARU) Menambahkan Partners */}
-          <Partners />
+          {/* <Partners /> */}
+          <VideoSection />
           {/* <TestimonialSlider /> */}
           <LocationMap />
           <Contact />

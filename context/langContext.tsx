@@ -239,6 +239,10 @@ sc5: 'Dan sektor lainnya.',
               error: "Gagal mengirim. Silakan coba lagi nanti.",
               errorEmpty: "Harap isi semua kolom (Nama, Email, HP).",
             },
+                video: {
+      title: "Lihat Kami Beraksi",
+      subtitle: "on-site implementation.",
+    },
   },
 
   // EN
@@ -474,7 +478,11 @@ project3Desc: "Development of a modern POS system for retail and F&B with invent
                 "Thank you! Your inquiry has been sent. Our team will contact you shortly.",
               error: "Failed to send. Please try again later.",
               errorEmpty: "Please fill all fields (Name, Email, Phone).",
-            },
+            },       
+            video: {
+      title: "See Us in Action",
+      subtitle: "on-site implementation.",
+    },
         
   },
 };

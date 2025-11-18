@@ -304,28 +304,28 @@ const ERPPageContent = () => {
             </div>
              <div className="rounded-lg overflow-hidden shadow-lg border border-gray-800">
               <img
-                src="/image/projects/erp/3.jpeg"
+                src="/image/projects/erp/4.jpeg"
                 alt="Modul Inventaris"
                 className="w-full h-auto"
               />
             </div>
             <div className="rounded-lg overflow-hidden shadow-lg border border-gray-800">
               <img
-                src="/image/projects/erp/4.jpeg"
+                src="/image/projects/erp/5.jpeg"
                 alt="Modul Keuangan"
                 className="w-full h-auto"
               />
             </div>
               <div className="rounded-lg overflow-hidden shadow-lg border border-gray-800">
               <img
-                src="/image/projects/erp/5.jpeg"
+                src="/image/projects/erp/6.jpeg"
                 alt="Modul Inventaris"
                 className="w-full h-auto"
               />
             </div>
             <div className="rounded-lg overflow-hidden shadow-lg border border-gray-800">
               <img
-                src="/image/projects/erp/6.jpeg"
+                src="/image/projects/erp/7.jpeg"
                 alt="Modul Keuangan"
                 className="w-full h-auto"
               />
