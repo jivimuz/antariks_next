@@ -27,6 +27,10 @@ export const allContent = {
           label:'POS',
           href:'/products/pos',
         },
+         {
+          label:'Multi Level',
+          href:'/products/multi_level',
+        },
       ] },
       
       { href: "/legality", label: "Legalitas", children: [] },
@@ -267,6 +271,10 @@ sc5: 'Dan sektor lainnya.',
          {
           label:'POS',
           href:'/products/pos',
+        },
+        {
+          label:'Multi Level',
+          href:'/products/multi_level',
         },
       ] },
      

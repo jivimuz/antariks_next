@@ -68,7 +68,7 @@ const allContent = {
       ],
     },
     techStack: {
-      title: "Tumpukan Teknologi",
+      title: "Tumpukan Teknologi (Bisa sesuai permintaan)",
     },
     results: {
       title: "Hasilnya",
@@ -134,7 +134,7 @@ const allContent = {
       ],
     },
     techStack: {
-      title: "Technology Stack",
+      title: "Technology Stack (Can be by request)",
     },
     results: {
       title: "The Results",

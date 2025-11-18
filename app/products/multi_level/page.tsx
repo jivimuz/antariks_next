@@ -9,13 +9,13 @@ import React, {
 } from "react";
 // Impor ikon untuk fitur
 import {
+  GitBranch,
   Users,
+  DollarSign,
+  BarChart,
   Smartphone,
-  MapPin,
-  Bell,
-  TrendingUp,
   CheckCheck,
-  UserCheck,
+  TrendingUp,
   Clock,
   Github,
   Linkedin,
@@ -32,37 +32,36 @@ const allContent = {
       back: "Kembali ke Beranda",
     },
     hero: {
-      title: "Studi Kasus: Umrah and Hajj App",
+      title: "Studi Kasus: Multi Level Agency",
       subtitle:
-        "Digitalisasi Manajemen Jamaah untuk Perusahaan Travel Haji & Umrah",
+        "Platform Web Admin & Aplikasi Mobile untuk Manajemen Agensi Multi-Level",
       industry: "Industri",
-      industryValue: "Travel Haji & Umrah",
+      industryValue: "Asuransi / Real Estat / MLM",
     },
     challenge: {
       title: "Tantangan",
-      text: "Perusahaan Travel mengelola ratusan data jamaah secara manual menggunakan spreadsheet. Proses ini rentan *human error*, sulit melacak status pembayaran, dan memvalidasi dokumen (paspor, visa). Selain itu, komunikasi antara mutawif (pembimbing) di lapangan dengan jamaah sering terputus.",
+      text: "Klien kami adalah sebuah perusahaan asuransi besar, kesulitan mengelola jaringan agensi mereka yang kompleks. Perhitungan komisi multi-level (upline/downline) dilakukan secara manual, menyebabkan keterlambatan pembayaran dan kesalahan. Agen di lapangan tidak memiliki visibilitas *real-time* atas performa tim atau potensi komisi mereka.",
     },
     solution: {
       title: "Solusi Kami",
-      // (MODIFIKASI) Diubah ke platform web/dasbor
-      text: "Antariks mengembangkan 'Umrah and Hajj App', sebuah platform terintegrasi berbasis web yang terdiri dari Dasbor Admin untuk manajemen dan Aplikasi Mobile pendamping untuk Jamaah. Sistem ini menyatukan data jamaah, keuangan, jadwal, dan komunikasi dalam satu sistem yang efisien.",
+      text: "Antariks merancang sebuah platform ganda. Dasbor Web Admin memungkinkan manajemen untuk membuat aturan komisi yang kompleks dan memvisualisasikan hierarki agensi. Aplikasi Mobile (iOS/Android) memberdayakan agen dengan data *real-time*.",
       featuresTitle: "Fitur Utama Termasuk:",
       features: [
         {
-          name: "Manajemen Jamaah & Dokumen",
-          desc: "Database terpusat untuk paspor, visa, status pembayaran, dan manasit (pembagian kamar).",
+          name: "Dasbor Admin: Visualisasi Hierarki",
+          desc: "Tampilan *tree-view* interaktif untuk semua upline dan downline.",
         },
         {
-          name: "Aplikasi Mobile Jamaah",
-          desc: "Jadwal ibadah *real-time*, notifikasi, panduan doa, dan tombol darurat (SOS).",
+          name: "Dasbor Admin: Mesin Komisi",
+          desc: "Mengatur aturan komisi, bonus, dan *overriding* yang kompleks secara dinamis.",
         },
         {
-          name: "Dasbor Keuangan (Finance)",
-          desc: "Melacak pembayaran, mengelola paket, dan membuat laporan keuangan.",
+          name: "Aplikasi Agen: Dasbor Performa",
+          desc: "Melacak penjualan pribadi, komisi yang diperoleh, dan performa tim (downline).",
         },
         {
-          name: "Notifikasi & Broadcast",
-          desc: "Mengirim pengumuman penting (misal: perubahan jadwal) ke semua jamaah secara instan.",
+          name: "Aplikasi Agen: Alat Rekrutmen",
+          desc: "Generator tautan referral unik dan materi pelatihan digital untuk agen baru.",
         },
       ],
     },
@@ -71,22 +70,21 @@ const allContent = {
     },
     results: {
       title: "Hasilnya",
-      text: "Umrah and Hajj App berhasil mentransformasi cara kerja klien, meningkatkan efisiensi operasional dan kepuasan jamaah.",
+      text: "Multi Level Agency mengotomatiskan proses bisnis inti klien dan meningkatkan retensi agen.",
       items: [
-        "Pengurangan 90% kesalahan entri data jamaah dan dokumen.",
-        "Peningkatan 30% pada kepuasan jamaah berkat komunikasi yang lancar.",
-        "Visibilitas 100% lokasi rombongan melalui pelacakan GPS.",
-        "Proses konfirmasi pembayaran 2x lebih cepat.",
+        "Perhitungan komisi 100% otomatis, mengurangi waktu proses dari 5 hari menjadi 5 menit.",
+        "Peningkatan 40% dalam rekrutmen agen baru melalui aplikasi mobile.",
+        "Akurasi data penjualan 99.9% di seluruh jaringan.",
+        "Transparansi komisi penuh meningkatkan kepercayaan dan motivasi agen.",
       ],
     },
     gallery: {
-      // (MODIFIKASI) Judul galeri
-      title: "Galeri Dasbor Umrah and Hajj App",
+      adminTitle: "Galeri Dasbor",
     },
     cta: {
-      title: "Siap Mendigitalkan Travel Anda?",
+      title: "Siap Mengelola Jaringan Anda?",
       subtitle:
-        "Diskusikan kebutuhan sistem manajemen travel Anda dengan asisten AI kami.",
+        "Diskusikan kebutuhan sistem manajemen agensi Anda dengan asisten AI kami.",
       button: "Mulai Konsultasi (via AI)",
     },
     footer: {
@@ -98,37 +96,36 @@ const allContent = {
       back: "Back to Home",
     },
     hero: {
-      title: "Case Study: Umrah and Hajj App",
+      title: "Case Study: Multi Level Agency",
       subtitle:
-        "Digitizing Pilgrim Management for Hajj & Umrah Travel Agency",
+        "Web Admin & Mobile App Platform for Multi-Level Agency Management",
       industry: "Industry",
-      industryValue: "Hajj & Umrah Travel",
+      industryValue: "Insurance / Real Estate / MLM",
     },
     challenge: {
       title: "The Challenge",
-      text: "Travel Agency was managing hundreds of pilgrim data manually using spreadsheets. This process was prone to human error, made tracking payment statuses difficult, and validating documents (passports, visas) was cumbersome. Furthermore, communication between Mutawifs (guides) in the field and pilgrims often broke down.",
+      text: "Our client is a large insurance company, struggled to manage their complex agency network. Multi-level commission calculations (upline/downline) were done manually, causing payment delays and errors. Agents in the field had no real-time visibility into their team's performance or commission potential.",
     },
     solution: {
       title: "Our Solution",
-      // (MODIFIKASI) Diubah ke platform web/dasbor
-      text: "Antariks developed 'Umrah and Hajj App', an integrated web-based platform consisting of an Admin Dashboard for management and a companion Mobile App for pilgrims. The app unifies pilgrim data, financials, schedules, and communication into one efficient system.",
+      text: "Antariks designed a dual platform. The Web Admin Dashboard allows management to create complex commission rules and visualize the agency hierarchy. The Mobile App (iOS/Android) empowers agents with real-time data.",
       featuresTitle: "Key Features Included:",
       features: [
         {
-          name: "Pilgrim & Document Management",
-          desc: "Centralized database for passports, visas, payment status, and room manifests.",
+          name: "Admin Dashboard: Hierarchy Visualization",
+          desc: "Interactive tree-view display of all uplines and downlines.",
         },
         {
-          name: "Pilgrim Mobile App",
-          desc: "Real-time worship schedules, notifications, prayer guides, and an SOS (emergency) button.",
+          name: "Admin Dashboard: Commission Engine",
+          desc: "Dynamically set complex commission rules, bonuses, and overrides.",
         },
         {
-          name: "Finance Dashboard",
-          desc: "Track payments, manage packages, and generate financial reports.",
+          name: "Agent App: Performance Dashboard",
+          desc: "Track personal sales, earned commissions, and team (downline) performance.",
         },
         {
-          name: "Broadcast & Notifications",
-          desc: "Instantly send important announcements (e.g., schedule changes) to all pilgrims.",
+          name: "Agent App: Recruitment Tools",
+          desc: "Unique referral link generator and digital training materials for new agents.",
         },
       ],
     },
@@ -137,22 +134,21 @@ const allContent = {
     },
     results: {
       title: "The Results",
-      text: "Umrah and Hajj App successfully transformed the client's workflow, improving operational efficiency and pilgrim satisfaction.",
+      text: "Multi Level Agency automated the client's core business processes and improved agent retention.",
       items: [
-        "90% reduction in pilgrim and document data entry errors.",
-        "30% increase in pilgrim satisfaction thanks to seamless communication.",
-        "100% visibility of group locations via GPS tracking.",
-        "2x faster payment confirmation processing.",
+        "100% automated commission calculation, reducing processing time from 5 days to 5 minutes.",
+        "40% increase in new agent recruitment via the mobile app.",
+        "99.9% sales data accuracy across the entire network.",
+        "Full commission transparency boosted agent trust and motivation.",
       ],
     },
     gallery: {
-      // (MODIFIKASI) Judul galeri
-      title: "Umrah and Hajj App Dashboard Gallery",
+      adminTitle: "Dashboard Gallery ",
     },
     cta: {
-      title: "Ready to Digitize Your Travel Agency?",
+      title: "Ready to Manage Your Network?",
       subtitle:
-        "Discuss your specific travel management system needs with our AI assistant.",
+        "Discuss your specific agency management system needs with our AI assistant.",
       button: "Start Consultation (via AI)",
     },
     footer: {
@@ -161,12 +157,13 @@ const allContent = {
   },
 };
 
-// -- Komponen Konten Halaman Haji & Umrah --
-const HajiUmrahPageContent = () => {
+
+// -- Komponen Konten Halaman MLA --
+const MLAPageContent = () => {
   const { lang } = useContext(LangContext);
   const t = allContent[lang];
-  const featureIcons = [Users, Smartphone, MapPin, Bell];
-  const resultIcons = [CheckCheck, TrendingUp, UserCheck, Clock];
+  const featureIcons = [GitBranch, DollarSign, Smartphone, Users];
+  const resultIcons = [Clock, TrendingUp, CheckCheck, Users];
 
   return (
     <>
@@ -179,8 +176,8 @@ const HajiUmrahPageContent = () => {
           <p className="text-lg sm:text-xl md:text-2xl text-green-400 mb-8">
             {t.hero.subtitle}
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 text-center">
-            
+          <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 text-center ">
+            {/* Industri */}
             <div className="text-gray-300">
               <span className="block text-sm font-bold text-gray-500 uppercase">
                 {t.hero.industry}
@@ -191,15 +188,32 @@ const HajiUmrahPageContent = () => {
         </div>
       </section>
 
-      {/* (MODIFIKASI) Gambar Utama - Layout Web Dashboard */}
+      {/* (MODIFIKASI) Galeri Gambar Utama - Menampilkan Web & Mobile */}
       <section className="bg-gray-900 pb-16 md:pb-28">
         <div className="container mx-auto px-6">
-          <div className="max-w-5xl mx-auto rounded-xl shadow-2xl overflow-hidden border-2 border-green-700/50">
-            <img
-              src="/image/projects/umrah_and_hajj/1.png"
-              alt="Umrah and Hajj App Admin Dashboard"
-              className="w-full h-auto"
-            />
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+            {/* Kiri: Mockup Mobile */}
+            <div className="relative mx-auto w-72 max-w-xs bg-gray-800 rounded-[2.5rem] shadow-2xl p-4 border-4 border-gray-700 lg:order-1">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-gray-800 rounded-b-xl z-20 border-b-4 border-l-4 border-r-4 border-gray-700"></div>
+              <div className="w-full h-[550px] bg-gray-950 rounded-[2rem] overflow-hidden shadow-inner">
+                <img
+                  src="/image/projects/mla/1.jpg"
+                  alt="MLA Agent Mobile App"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Kanan: Dasbor Web */}
+            <div className="lg:col-span-2 lg:order-2">
+              <div className="max-w-4xl mx-auto rounded-xl shadow-2xl overflow-hidden border-2 border-green-700/50">
+                <img
+                  src="/image/projects/mla/5.png"
+                  alt="Multi Level Agency Admin Dashboard"
+                  className="w-full h-auto"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -264,11 +278,11 @@ const HajiUmrahPageContent = () => {
             </h2>
             <div className="flex flex-wrap gap-3">
               {[
-                "Laravel", // (Tambahan)
-                "React", // (MODIFIKASI) Diubah dari React Native
-                "Node.js",
+                "Jquery (Admin)",
+                "React Native (Agent)",
+                "Laravel",
                 "MySQL",
-                "AWS",
+                "Rest API",
               ].map((tech) => (
                 <span
                   key={tech}
@@ -304,25 +318,37 @@ const HajiUmrahPageContent = () => {
         </div>
       </section>
 
-      {/* (MODIFIKASI) Galeri - Menggunakan rasio web */}
+      {/* Galeri - Menampilkan Keduanya */}
       <section className="py-16 md:py-28 bg-gray-950">
         <div className="container mx-auto px-6">
+          {/* Galeri Admin Web */}
           <h2 className="text-2xl md:text-3xl font-bold text-white text-center mb-12">
-            {t.gallery.title}
+            {t.gallery.adminTitle}
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="rounded-lg overflow-hidden shadow-lg border border-gray-800">
+          <div className="flex flex-grow mb-16 text-center justify-center align-center">
+            <div className="rounded-lg mr-2 overflow-hidden shadow-lg border border-gray-800">
               <img
-                src="/image/projects/umrah_and_hajj/2.png"
-                alt="Dasbor Manajemen Jamaah"
-                className="w-full h-auto"
+                src="/image/projects/mla/4.png"
+                alt="Dasbor Analitik Komisi"
+                className="w-full h-auto max-h-100"
               />
             </div>
-            <div className="rounded-lg overflow-hidden shadow-lg border border-gray-800">
+           
+          
+            {/* Placeholder 3 */}
+            <div className="rounded-lg mr-2 overflow-hidden shadow-lg border border-gray-800 max-w-xs justify-center align-center">
               <img
-                src="/image/projects/umrah_and_hajj/3.png"
-                alt="Dasbor Keuangan"
-                className="w-full h-auto"
+                src="/image/projects/mla/2.jpg"
+                alt="Jaringan Downline"
+                className="w-full h-auto max-h-100"
+              />
+            </div>
+            {/* Placeholder 4 */}
+            <div className="rounded-lg mr-2 overflow-hidden shadow-lg border border-gray-800 max-w-xs justify-center align-center">
+              <img
+                src="/image/projects/mla/3.jpg"
+                alt="Alat Rekrutmen"
+                className="w-full h-auto max-h-100"
               />
             </div>
           </div>
@@ -349,15 +375,13 @@ const HajiUmrahPageContent = () => {
 };
 
 // -- Komponen Halaman Utama --
-export default function HajiUmrahPortfolioPage() {
-  
+export default function MLAPortfolioPage() {
 
   return (
-    
       <div className="bg-gray-950 text-gray-200 antialiased font-sans min-h-screen">
         <Header />
-        <main className="mt-10 md:mt-0">
-          <HajiUmrahPageContent />
+        <main>
+          <MLAPageContent />
         </main>
         <Footer />
       </div>
