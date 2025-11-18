@@ -1018,6 +1018,7 @@ if (!mounted) {
         <Header />
         <main>
           <Hero />
+          <VideoSection />
           <Services />
           {/* (BARU) Menambahkan TechStack */}
           <TechStack />
@@ -1025,7 +1026,6 @@ if (!mounted) {
           <AboutUs />
           {/* (BARU) Menambahkan Partners */}
           {/* <Partners /> */}
-          <VideoSection />
           {/* <TestimonialSlider /> */}
           <LocationMap />
           <Contact />
