@@ -66,7 +66,7 @@ const allContent = {
 const LocationPageContent = () => {
   const { lang } = useContext(LangContext);
   const t = allContent[lang];
-  const mapUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d632.2972372450716!2d108.52638230611186!3d-6.711728397466543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6ee3004c0bdb1b%3A0xe3d7a1cd0042f4f1!2sAntariks!5e0!3m2!1sid!2sid!4v1763121831675!5m2!1sid!2sid";
+  const mapUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3384.937982929093!2d108.52618479599339!3d-6.711641494594766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6ee3004c0bdb1b%3A0xe3d7a1cd0042f4f1!2sAntariks!5e0!3m2!1sid!2sid!4v1763516652987!5m2!1sid!2sid";
 
   return (
     <>
