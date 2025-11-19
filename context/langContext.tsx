@@ -10,8 +10,7 @@ export const allContent = {
     navLinks: [
       { href: "/#services", label: "Layanan", children: [] },
       { href: "/aboutus", label: "Tentang Kami", children: [] },
-      { href: "/location", label: "Lokasi", children: [] },
-      { href: "/#products", label: "Portfolio", children: [
+      { href: "#", label: "Portfolio", children: [
          {
           label:'ERP',
           href:'/products/erp',
@@ -34,6 +33,7 @@ export const allContent = {
       ] },
       
       { href: "/legality", label: "Legalitas", children: [] },
+      { href: "/location", label: "Kontak Kami", children: [] },
     ],
     contactCta: "Konsultasi Sekarang",
     hero: {
@@ -254,8 +254,7 @@ sc5: 'Dan sektor lainnya.',
     navLinks: [
       { href: "/#services", label: "Services", children: [] },
        { href: "/aboutus", label: "About Us", children: [] },
-      { href: "/location", label: "Location", children: [] },
-      { href: "/#products", label: "Portfolio", children: [
+      { href: "#", label: "Portfolio", children: [
         {
           label:'ERP',
           href:'/products/erp',
@@ -279,6 +278,7 @@ sc5: 'Dan sektor lainnya.',
       ] },
      
       { href: "/legality", label: "Legality", children: [] },
+      { href: "/location", label: "Contact Us", children: [] },
     ],
     contactCta: "Consult Now",
     hero: {

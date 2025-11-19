@@ -126,7 +126,8 @@ const LocationPageContent = () => {
                         href="mailto:antariks.corp@gmail.com"
                         className="hover:text-green-400 transition-colors"
                       >
-                        antariks.corp@gmail.com
+                        - antariks@jivimuz.my.id <br />
+                        - antariks.corp@gmail.com
                       </a>
                     </div>
                   </div>
