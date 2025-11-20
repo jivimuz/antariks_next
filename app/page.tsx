@@ -556,8 +556,10 @@ const VideoSection = () => {
   const { t } = useContext(LangContext);
 
   // Ganti URL placeholder ini dengan ID video YouTube Anda
-  const videoUrl1 = "https://www.youtube.com/embed/43idhmI-A1A"; // Placeholder 1
-  const videoUrl2 = "https://www.youtube.com/embed/22EPeMJgoZI"; // Placeholder 2
+  // const videoUrl1 = "https://www.youtube.com/embed/43idhmI-A1A"; // Placeholder 1
+  // const videoUrl2 = "https://www.youtube.com/embed/22EPeMJgoZI"; // Placeholder 2
+  const videoUrl1 = '';
+  const videoUrl2 = '';
 
   return (
     <section id="videos" className="py-16 md:py-28 bg-gray-900">
