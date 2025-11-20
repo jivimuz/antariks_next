@@ -245,7 +245,7 @@ sc5: 'Dan sektor lainnya.',
             },
                 video: {
       title: "Lihat Kami Beraksi",
-      subtitle: "on-site implementation.",
+      subtitle: "Implementasi dan Pelatihan Onsite.",
     },
   },
 
@@ -489,7 +489,7 @@ project3Desc: "Development of a modern POS system for retail and F&B with invent
             },       
             video: {
       title: "See Us in Action",
-      subtitle: "on-site implementation.",
+      subtitle: "On-site implementation and training.",
     },
         
   },

@@ -558,8 +558,8 @@ const VideoSection = () => {
   // Ganti URL placeholder ini dengan ID video YouTube Anda
   // const videoUrl1 = '';
   // const videoUrl2 = '';
-  const videoUrl1 = "https://www.youtube.com/embed/9rwxMmwsUS8"; // Placeholder 1
-  const videoUrl2 = "https://www.youtube.com/embed/1N4LrvYZcoo"; // Placeholder 2
+  const videoUrl1 = "https://www.youtube.com/embed/9rwxMmwsUS8?controls=0&autoplay=1&mute=1&playsinline=1&loop=1&playlist=9rwxMmwsUS8"; // Placeholder 1
+  const videoUrl2 = "https://www.youtube.com/embed/1N4LrvYZcoo?controls=0&autoplay=1&mute=1&playsinline=1&loop=1&playlist=1N4LrvYZcoo"; // Placeholder 2
 
   return (
     <section id="videos" className="py-16 md:py-28 bg-gray-900">
