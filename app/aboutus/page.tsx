@@ -16,7 +16,8 @@ import {
   Users, // Untuk Kemitraan
   ShieldCheck, // Untuk Integritas
   Target, // Untuk Misi
-  Eye, // Untuk Visi
+  Eye,
+  Globe, // Untuk Visi
 } from "lucide-react";
 import LangContext from "@/context/langContext";
 import Header from "@/components/layout/headerComponent";
@@ -154,7 +155,7 @@ const allContent = {
       ],
     },
     team: {
-      title: "Meet Our Team",
+      title: "Meet Our Founder",
       subtitle:
         "The people behind the vision and technology of Antariks.",
       members: [
@@ -189,7 +190,11 @@ const AboutUsPageContent = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pt-48 md:pb-24 bg-gray-900 text-center">
+      <section className="pt-32 pb-16 md:pt-48 md:pb-24 bg-gray-900 text-center relative  overflow-hidden">
+         {/* --- 1. Ambient Background Effects (Sama seperti Services) --- */}
+      <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl -translate-y-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none"></div>
         <div className="container mx-auto px-6">
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-white mb-4">
             {t.hero.title}
@@ -262,7 +267,11 @@ const AboutUsPageContent = () => {
       </section>
 
       {/* Nilai-Nilai Kami */}
-      <section className="py-16 md:py-28 bg-gray-900">
+      <section className="py-16 md:py-28 bg-gray-900 relative overflow-hidden">
+         {/* --- 1. Ambient Background Effects (Sama seperti Services) --- */}
+      <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl -translate-y-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none"></div>
         <div className="container mx-auto px-6">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -297,51 +306,103 @@ const AboutUsPageContent = () => {
       </section>
 
       {/* Tim Kami */}
-      <section className="py-16 md:py-28 bg-gray-950">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              {t.team.title}
-            </h2>
-            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-              {t.team.subtitle}
-            </p>
+     <section className="relative py-20 md:py-28 bg-gray-950 overflow-hidden">
+      
+      {/* --- 1. Ambient Background (Konsisten) --- */}
+      {/* Bola cahaya ungu/biru untuk membedakan sedikit dengan section product */}
+
+      <div className="container mx-auto px-6 relative z-10">
+        
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center justify-center p-3 mb-4 rounded-full bg-gray-900/80 border border-gray-800 shadow-lg backdrop-blur-sm">
+            <Users size={24} className="text-emerald-400" />
           </div>
-          <div className="grid  mx-auto justify-center align-center">
-            {t.team.members.map((member, index) => (
-              <div
-                key={index}
-                className="bg-gray-900 rounded-xl shadow-xl border border-gray-800 overflow-hidden text-center group"
-              >
-                <div className="relative h-64 overflow-hidden">
-                  <img
-                    src={member.img}
-                    alt={member.name}
-                    className="w-full h-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-2xl font-semibold text-white mb-1">
+          
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            {t.team.title}
+          </h2>
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+            {t.team.subtitle}
+          </p>
+        </div>
+
+        {/* Grid Layout - Diperbaiki agar responsif */}
+        <div className="grid  gap-8 max-w-5xl mx-auto items-center justify-center ">
+          {t.team.members.map((member, index) => (
+            <div
+              key={index}
+              className="group relative bg-gray-900/40 backdrop-blur-sm rounded-2xl border border-gray-800 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-emerald-500/50 hover:shadow-[0_10px_40px_-10px_rgba(99,102,241,0.3)]"
+            >
+              
+              {/* --- Image Container --- */}
+              <div className="relative h-80 overflow-hidden">
+                {/* Overlay Gradient di bawah gambar agar teks terbaca jelas */}
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent z-10 opacity-90" />
+                
+                {/* Gambar Profil */}
+                <img
+                  src={member.img}
+                  alt={member.name}
+                  className="w-full h-full object-cover grayscale transition-all duration-700 ease-in-out group-hover:grayscale-0 group-hover:scale-110"
+                />
+
+                {/* Dekorasi Garis Tech di pojok */}
+                <div className="absolute top-4 right-4 w-12 h-12 border-t-2 border-r-2 border-emerald-500/30 rounded-tr-xl z-10 transition-all group-hover:border-emerald-500 group-hover:w-16 group-hover:h-16"></div>
+              </div>
+
+              {/* --- Content Card --- */}
+              {/* Posisi absolute agar "naik" ke atas gambar sedikit */}
+              <div className="relative z-20 p-6 -mt-20 text-center">
+                
+                {/* Nama & Role */}
+                <div className="bg-gray-900/80 backdrop-blur-md border border-gray-800 rounded-xl p-4 shadow-xl transform transition-transform duration-300 group-hover:scale-105">
+                  <h3 className="text-2xl font-bold text-white mb-1 group-hover:text-blue-400 transition-colors">
                     {member.name}
                   </h3>
-                  <p className="text-green-400 mb-4">{member.role}</p>
-                  <a
-                    href="https://www.linkedin.com/in/jivimuz" // Ganti dengan URL LinkedIn asli
-                    target="_blank"
-                    className="text-gray-500 hover:text-green-400 transition-colors"
-                    aria-label={`${member.name}'s LinkedIn`}
-                  >
-                    <Linkedin size={24} className="mx-auto" />
-                  </a>
+                  <p className="text-sm font-medium text-emerald-400 tracking-wider uppercase mb-4">
+                    {member.role}
+                  </p>
+
+                  {/* Divider Halus */}
+                  <div className="h-px w-1/2 mx-auto bg-gradient-to-r from-transparent via-gray-700 to-transparent mb-4"></div>
+
+                  <div className="flex justify-center gap-4">
+                    <a
+                      href="https://www.linkedin.com/in/jivimuz" // Gunakan member.linkedin jika ada di data
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 rounded-lg bg-gray-800 text-gray-400 hover:bg-blue-600 hover:text-white transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30"
+                      aria-label={`${member.name}'s LinkedIn`}
+                    >
+                      <Linkedin size={20} />
+                    </a>
+                    <a
+                      href="https://jivimuz.my.id" // Gunakan member.website jika ada di data
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 rounded-lg bg-gray-800 text-gray-400 hover:bg-emerald-600 hover:text-white transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30"
+                      aria-label={`${member.name}'s Website`}
+                    >
+                      <Globe size={20} />
+                    </a>
+                  </div>
                 </div>
+
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
-      </section>
+
+      </div>
+    </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-28 bg-gray-900 text-center">
+      <section  className="relative py-20 md:py-28 bg-gray-900 overflow-hidden">
+         {/* --- 1. Ambient Background Effects (Sama seperti Services) --- */}
+      <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl -translate-y-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none"></div>
         <div className="container mx-auto px-6 max-w-2xl">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
             {t.cta.title}

@@ -87,7 +87,11 @@ const LegalityPageContent = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pt-48 md:pb-24 bg-gray-900 text-center">
+      <section className="pt-32 pb-16 md:pt-48 md:pb-24 bg-gray-900 text-center relative overflow-hidden">
+         {/* --- 1. Ambient Background Effects (Sama seperti Services) --- */}
+      <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl -translate-y-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none"></div>
         <div className="container mx-auto px-6">
           <ShieldCheck
             size={64}
@@ -108,7 +112,11 @@ const LegalityPageContent = () => {
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             {/* Sisi Kiri: Detail Teks */}
-            <div className="bg-gray-900 p-8 rounded-xl border border-gray-800 shadow-xl">
+            <div className="bg-gray-900 p-8 rounded-xl border border-gray-800 shadow-xl relative overflow-hidden">
+         {/* --- 1. Ambient Background Effects (Sama seperti Services) --- */}
+      <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl -translate-y-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none"></div>
               <h2 className="text-2xl font-bold text-white mb-2">
                 {t.legality.companyName}
               </h2>

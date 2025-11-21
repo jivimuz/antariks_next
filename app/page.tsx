@@ -580,7 +580,7 @@ const AboutUs = () => {
             <p className="text-lg text-gray-300 mb-4">{t.about.p1}</p>
             <p className="text-lg text-gray-300 mb-8">{t.about.p2}</p>
             <a
-              href="#contact"
+              href="/chat"
               className="text-green-400 font-semibold text-lg group"
             >
               {t.about.cta}
@@ -824,7 +824,11 @@ const VideoSection = () => {
 const LocationMap = () => {
   const { t } = useContext(LangContext);
   return (
-    <section id="location" className="py-20 md:py-28 bg-gray-900/70">
+    <section id="location" className="relative py-20 md:py-28 bg-gray-900 overflow-hidden">
+         {/* --- 1. Ambient Background Effects (Sama seperti Services) --- */}
+      <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl -translate-y-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none"></div>
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">

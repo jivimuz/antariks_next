@@ -171,7 +171,11 @@ const HajiUmrahPageContent = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pt-48 md:pb-24 bg-gray-900 text-center">
+      <section className="pt-32 pb-16 md:pt-48 md:pb-24 bg-gray-900 text-center relative overflow-hidden">
+         {/* --- 1. Ambient Background Effects (Sama seperti Services) --- */}
+      <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl -translate-y-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none"></div>
         <div className="container mx-auto px-6">
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-white mb-4">
             {t.hero.title}
@@ -189,10 +193,7 @@ const HajiUmrahPageContent = () => {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* (MODIFIKASI) Gambar Utama - Layout Web Dashboard */}
-      <section className="bg-gray-900 pb-16 md:pb-28">
+      <br />
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto rounded-xl shadow-2xl overflow-hidden border-2 border-green-700/50">
             <img
@@ -255,7 +256,11 @@ const HajiUmrahPageContent = () => {
       </section>
 
       {/* Tech Stack & Hasil */}
-      <section className="py-16 md:py-28 bg-gray-900">
+      <section className="py-16 md:py-28 bg-gray-900 relative overflow-hidden">
+         {/* --- 1. Ambient Background Effects (Sama seperti Services) --- */}
+      <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl -translate-y-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none"></div>
         <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
           {/* Tech Stack */}
           <div>
@@ -330,7 +335,11 @@ const HajiUmrahPageContent = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-28 bg-gray-900 text-center">
+      <section className="py-16 md:py-28 bg-gray-900 text-center relative overflow-hidden">
+         {/* --- 1. Ambient Background Effects (Sama seperti Services) --- */}
+      <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl -translate-y-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none"></div>
         <div className="container mx-auto px-6 max-w-2xl">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
             {t.cta.title}
