@@ -186,3 +186,43 @@ body {
   overflow: hidden;
 }
 
+/* Container utama pembungkus */
+.wave-container {
+  position: relative;
+  width: 100%;
+  height: 500px;       /* Sesuaikan tinggi section */
+  background-color: #2563eb; /* Warna background atas (Biru) */
+  overflow: hidden;    /* Wajib agar animasi tidak bikin scroll horizontal */
+}
+
+/* Jalur animasi (Track) yang lebarnya 2x layar */
+.wave-track {
+  position: absolute;
+  bottom: -1px;        /* -1px untuk menutup celah garis tipis */
+  left: 0;
+  width: 200%;         /* Lebar 200% untuk menampung 2 SVG */
+  display: flex;       /* Agar SVG berjejer ke samping */
+  overflow: hidden;
+  line-height: 0;      /* Menghapus spasi default SVG */
+  
+  /* Panggil animasi */
+  animation: moveWave 15s linear infinite;
+}
+
+/* SVG Item individual */
+.wave-item {
+  width: 50%;          /* 50% dari 200% = 100% lebar layar */
+  height: 100px;       /* Tinggi gelombang */
+  display: block;
+  transform: rotate(180deg); /* Memutar agar lancip ke atas */
+}
+
+/* Definisi Keyframe Animasi */
+@keyframes moveWave {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* Geser setengah track (1 gelombang penuh) */
+  }
+}

@@ -1,6 +1,6 @@
 "use client"; // Diperlukan untuk Next.js App Router agar bisa menggunakan hooks
 
-import React, { useState, useEffect,  useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 // (BARU) Import Head untuk menambahkan link CDN
 // ERROR: 'next/head' tidak dapat di-resolve di lingkungan ini, akan dihapus.
 // import Head from "next/head";
@@ -18,6 +18,9 @@ import {
   Cloud,
   MapPin,
   Video,
+  ShoppingBag,
+  ArrowUpRight,
+  ExternalLink,
 } from "lucide-react";
 import LangContext, { allContent } from "@/context/langContext";
 import Header from "@/components/layout/headerComponent";
@@ -25,15 +28,15 @@ import Footer from "@/components/layout/footerComponent";
 
 // -- Data Bilingual untuk Produk dan Testimoni --
 const products = [
-   {
+  {
     title: {
       id: "Dental Care",
       en: "Dental Care",
     },
     description: {
-  id: "Sistem manajemen klinik gigi terintegrasi yang menggunakan teknologi 3D mapping untuk visualisasi gigi pasien, memudahkan perencanaan perawatan, monitoring, dan rekam medis digital.",
-  en: "An integrated dental clinic management system leveraging 3D mapping technology for patient teeth visualization, facilitating treatment planning, monitoring, and digital medical record management.",
-},
+      id: "Sistem manajemen klinik gigi terintegrasi yang menggunakan teknologi 3D mapping untuk visualisasi gigi pasien, memudahkan perencanaan perawatan, monitoring, dan rekam medis digital.",
+      en: "An integrated dental clinic management system leveraging 3D mapping technology for patient teeth visualization, facilitating treatment planning, monitoring, and digital medical record management.",
+    },
     imageUrl: "https://img.freepik.com/free-photo/team-female-dentists-treating-patients-teeth-visit-dentist-dentistry_169016-67227.jpg",
   },
   {
@@ -126,32 +129,32 @@ const products = [
   },
 ];
 
- const testimonials = [
-        {
-          quote: {
-            id: "Tim ini mengubah ide mentah kami menjadi produk yang fungsional dan indah. Profesionalisme dan keahlian teknis mereka tidak tertandingi.",
-            en: "This team turned our raw idea into a functional, beautiful product. Their professionalism and technical expertise are unmatched.",
-          },
-          name: "Anya Forger",
-          title: "CEO, TechNova Solutions",
-        },
-        {
-          quote: {
-            id: "Proses pengembangan sangat transparan. Kami selalu tahu progresnya, dan hasil akhirnya melebihi ekspektasi kami.",
-            en: "The development process was incredibly transparent. We always knew the progress, and the final result exceeded our expectations.",
-          },
-          name: "Loid Hendriks",
-          title: "CTO, DigitalFrontiers",
-        },
-        {
-          quote: {
-            id: "Bukan hanya pengembang, mereka adalah mitra strategis. Mereka memberikan wawasan berharga yang membantu membentuk produk kami.",
-            en: "They aren't just developers; they are strategic partners. They provided valuable insights that helped shape our product.",
-          },
-          name: "Yor Briar",
-          title: "Product Manager, InnoVentures",
-        },
-      ];
+const testimonials = [
+  {
+    quote: {
+      id: "Tim ini mengubah ide mentah kami menjadi produk yang fungsional dan indah. Profesionalisme dan keahlian teknis mereka tidak tertandingi.",
+      en: "This team turned our raw idea into a functional, beautiful product. Their professionalism and technical expertise are unmatched.",
+    },
+    name: "Anya Forger",
+    title: "CEO, TechNova Solutions",
+  },
+  {
+    quote: {
+      id: "Proses pengembangan sangat transparan. Kami selalu tahu progresnya, dan hasil akhirnya melebihi ekspektasi kami.",
+      en: "The development process was incredibly transparent. We always knew the progress, and the final result exceeded our expectations.",
+    },
+    name: "Loid Hendriks",
+    title: "CTO, DigitalFrontiers",
+  },
+  {
+    quote: {
+      id: "Bukan hanya pengembang, mereka adalah mitra strategis. Mereka memberikan wawasan berharga yang membantu membentuk produk kami.",
+      en: "They aren't just developers; they are strategic partners. They provided valuable insights that helped shape our product.",
+    },
+    name: "Yor Briar",
+    title: "Product Manager, InnoVentures",
+  },
+];
 
 // -- Komponen Hero dengan Animasi Mengetik --
 const Hero = () => {
@@ -163,9 +166,9 @@ const Hero = () => {
   const delay = 2000;
 
   useEffect(() => {
-  let index = 0;
-  let isDeleting = false;
-  let timeoutId: string | number | NodeJS.Timeout | undefined;
+    let index = 0;
+    let isDeleting = false;
+    let timeoutId: string | number | NodeJS.Timeout | undefined;
 
     const type = () => {
       const currentText = textToType.substring(0, index);
@@ -200,7 +203,7 @@ const Hero = () => {
 
 
   return (<>
-  
+
     <section
       id="home"
       // (DARI KODE ANDA) Menambahkan class parallax dan bg-cover
@@ -210,7 +213,7 @@ const Hero = () => {
         backgroundImage: "url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop')"
       }}
     >
-        <div className="absolute inset-0 bg-gray-900/70"></div>
+      <div className="absolute inset-0 bg-gray-900/70"></div>
       {/* Animasi Latar Belakang (Floating Code Snippets) */}
       <div className="absolute inset-0 z-0 ">
         <span className="absolute text-green-500 top-1/4 left-1/4 text-2xl animate-float">
@@ -228,7 +231,7 @@ const Hero = () => {
         <span className="absolute text-green-500 top-2/3 left-1/4 text-2xl animate-float-delay-1">
           const
         </span>
-         <span className="absolute text-green-500 top-1/2 left-1/4 text-2xl animate-float">
+        <span className="absolute text-green-500 top-1/2 left-1/4 text-2xl animate-float">
           &lt;/&gt;
         </span>
         <span className="absolute text-green-500 top-1/4 left-3/4 text-xl animate-float-delay-1">
@@ -257,65 +260,102 @@ const Hero = () => {
         <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-xl mx-auto">
           {t.hero.subtitle}
         </p>
-      <div className="flex flex-col md:flex-row w-full">
-  <a
-    href="/chat"
-    className="bg-emerald-600 m-1 w-full text-white py-3 px-8 rounded-full text-lg font-semibold shadow-lg shadow-green-600/30 transition-all duration-300 hover:bg-emerald-500 hover:shadow-xl hover:shadow-green-500/50 hover:-translate-y-1 transform"
-  >
-    {t.hero.cta}
-  </a>
+        <div className="flex flex-col md:flex-row w-full">
+          <a
+            href="/chat"
+            className="bg-emerald-600 m-1 w-full text-white py-3 px-8 rounded-full text-lg font-semibold shadow-lg shadow-green-600/30 transition-all duration-300 hover:bg-emerald-500 hover:shadow-xl hover:shadow-green-500/50 hover:-translate-y-1 transform"
+          >
+            {t.hero.cta}
+          </a>
 
-  <a
-    href="/cp"
-    className="bg-blue-600 m-1 w-full text-white py-3 px-8 rounded-full text-lg font-semibold shadow-lg shadow-green-600/30 transition-all duration-300 hover:bg-blue-500 hover:shadow-xl hover:shadow-green-500/50 hover:-translate-y-1 transform"
-  >
-    Company Profile
-  </a>
-</div>
+          <a
+            href="/cp"
+            className="bg-blue-600 m-1 w-full text-white py-3 px-8 rounded-full text-lg font-semibold shadow-lg shadow-green-600/30 transition-all duration-300 hover:bg-blue-500 hover:shadow-xl hover:shadow-green-500/50 hover:-translate-y-1 transform"
+          >
+            Company Profile
+          </a>
+        </div>
 
       </div>
+      
     </section>
+  <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none ">
+       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -10 1440 300"
+          preserveAspectRatio="none"
+          className="relative block w-[calc(100%+1.3px)] h-[100px] " >
+  <path fill="#030712"  d="M0,224L13.3,208C26.7,192,53,160,80,138.7C106.7,117,133,107,160,117.3C186.7,128,213,160,240,144C266.7,128,293,64,320,48C346.7,32,373,64,400,90.7C426.7,117,453,139,480,170.7C506.7,203,533,245,560,240C586.7,235,613,181,640,181.3C666.7,181,693,235,720,261.3C746.7,288,773,288,800,250.7C826.7,213,853,139,880,112C906.7,85,933,107,960,122.7C986.7,139,1013,149,1040,170.7C1066.7,192,1093,224,1120,218.7C1146.7,213,1173,171,1200,144C1226.7,117,1253,107,1280,106.7C1306.7,107,1333,117,1360,106.7C1386.7,96,1413,64,1427,48L1440,32L1440,320L1426.7,320C1413.3,320,1387,320,1360,320C1333.3,320,1307,320,1280,320C1253.3,320,1227,320,1200,320C1173.3,320,1147,320,1120,320C1093.3,320,1067,320,1040,320C1013.3,320,987,320,960,320C933.3,320,907,320,880,320C853.3,320,827,320,800,320C773.3,320,747,320,720,320C693.3,320,667,320,640,320C613.3,320,587,320,560,320C533.3,320,507,320,480,320C453.3,320,427,320,400,320C373.3,320,347,320,320,320C293.3,320,267,320,240,320C213.3,320,187,320,160,320C133.3,320,107,320,80,320C53.3,320,27,320,13,320L0,320Z"></path>
+</svg>
+      </div>
   </>
   );
 };
 
-// -- Komponen Layanan (Service) --
 const Services = () => {
   const { t } = useContext(LangContext);
+  
   const serviceItems = [
     { icon: Code, ...t.services.items[0] },
     { icon: Smartphone, ...t.services.items[1] },
     { icon: Cloud, ...t.services.items[2] },
     { icon: PenTool, ...t.services.items[3] },
     { icon: Database, ...t.services.items[4] },
-    { icon: ArrowRight, ...t.services.items[5] },
+    { icon: ArrowRight, ...t.services.items[5] }, // Asumsi item terakhir ada
   ];
 
   return (
-    <section id="services" className="py-20 md:py-28 bg-gray-900">
-      <div className="container mx-auto px-6">
+    <section id="services" className="relative py-20 md:py-28 bg-gray-900 overflow-hidden">
+      
+      {/* --- 1. Elemen Dekoratif Latar Belakang (Ambient Glow) --- */}
+      {/* Bola cahaya hijau samar di kiri atas */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-green-500/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+      {/* Bola cahaya hijau samar di kanan bawah */}
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-green-500/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 pointer-events-none" />
+      
+      {/* Grid Pattern Halus (Opsional, menambah tekstur) */}
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none"></div>
+
+      <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 inline-block relative">
             {t.services.title}
+            {/* Garis hiasan di bawah judul */}
+            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-green-500 rounded-full"></div>
           </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto mt-6">
             {t.services.subtitle}
           </p>
         </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {serviceItems.map((item, index) => (
             <div
               key={index}
-              className="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700 transition-all duration-300 ease-in-out transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-green-500/10 hover:border-green-500 group"
+              className="group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 hover:border-green-500/50 transition-all duration-500 ease-out hover:-translate-y-2"
             >
-              <item.icon
-                size={40}
-                className="mb-6 text-green-400 transition-transform duration-300 group-hover:scale-110"
-              />
-              <h3 className="text-2xl font-semibold text-white mb-3">
-                {item.title}
-              </h3>
-              <p className="text-gray-400">{item.description}</p>
+              {/* Efek Gradient Hover di Background Kartu */}
+              <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+
+              {/* Konten Kartu */}
+              <div className="relative z-10">
+                {/* Icon Wrapper yang lebih keren */}
+                <div className="w-14 h-14 mb-6 rounded-xl bg-gray-900 border border-gray-700 flex items-center justify-center group-hover:border-green-500/50 group-hover:shadow-[0_0_20px_rgba(34,197,94,0.3)] transition-all duration-300">
+                  <item.icon
+                    size={28}
+                    className="text-gray-300 group-hover:text-green-400 transition-colors duration-300"
+                  />
+                </div>
+
+                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-green-400 transition-colors duration-300">
+                  {item.title}
+                </h3>
+                
+                <p className="text-gray-400 leading-relaxed">
+                  {item.description}
+                </p>
+
+                {/* Dekorasi panah kecil atau garis saat hover (Opsional) */}
+                <div className="mt-6 w-8 h-1 bg-gray-700 rounded-full group-hover:w-full group-hover:bg-green-500 transition-all duration-500"></div>
+              </div>
             </div>
           ))}
         </div>
@@ -328,8 +368,8 @@ const Services = () => {
 const TechStack = () => {
   const { t } = useContext(LangContext);
   const techs = [
-    { name: "PHP", icon: "devicon-php-plain text-blue-300" },
-    { name: "JavaScript", icon: "devicon-javascript-plain text-yellow-300" },
+    // { name: "PHP", icon: "devicon-php-plain text-blue-300" },
+    // { name: "JavaScript", icon: "devicon-javascript-plain text-yellow-300" },
     { name: "Laravel", icon: "devicon-laravel-plain text-red-400" },
     { name: "CodeIgniter", icon: "devicon-codeigniter-plain text-red-500" },
     { name: "Node.js", icon: "devicon-nodejs-plain text-green-400" },
@@ -342,13 +382,13 @@ const TechStack = () => {
     { name: "Python", icon: "devicon-python-plain text-yellow-300" },
     { name: "MySQL", icon: "devicon-mysql-plain text-blue-300" },
     { name: "MS SQL", icon: "devicon-microsoftsqlserver-plain text-red-400" },
-    { name: "Oracle", icon: "devicon-oracle-original text-red-500" },
+    // { name: "Oracle", icon: "devicon-oracle-original text-red-500" },
     { name: "Java", icon: "devicon-java-plain text-orange-400" },
     { name: "TypeScript", icon: "devicon-typescript-plain text-blue-400" },
-    { name: "Figma", icon: "devicon-figma-plain text-purple-400" },
-    { name: "Docker", icon: "devicon-docker-plain text-blue-400" },
-    { name: "Git", icon: "devicon-git-plain text-orange-500" },
-    { name: "AWS", icon: "devicon-amazonwebservices-original text-orange-400" },
+    // { name: "Figma", icon: "devicon-figma-plain text-purple-400" },
+    // { name: "Docker", icon: "devicon-docker-plain text-blue-400" },
+    // { name: "Git", icon: "devicon-git-plain text-orange-500" },
+    // { name: "AWS", icon: "devicon-amazonwebservices-original text-orange-400" },
   ];
 
   return (
@@ -362,7 +402,7 @@ const TechStack = () => {
             {t.techStack.subtitle}
           </p>
         </div>
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-6 md:gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-6 md:gap-8">
           {techs.map((tech) => (
             <div
               key={tech.name}
@@ -385,8 +425,12 @@ const TechStack = () => {
 // -- Komponen Slider Produk --
 const ProductSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const { lang, t } = useContext(LangContext);
-
+  // Mock data context jika belum ada, pastikan sesuaikan dengan context asli Anda
+  const { lang, t } = useContext(LangContext); 
+  
+  // Asumsi data products diambil dari props atau context, disini saya pakai variabel dummy untuk struktur
+  // Pastikan variabel 'products' tersedia di scope ini
+  
   const prevSlide = () => {
     setCurrentIndex(
       currentIndex === 0 ? products.length - 1 : currentIndex - 1
@@ -404,78 +448,117 @@ const ProductSlider = () => {
   };
 
   return (
-    <section id="products" className="py-20 md:py-28 bg-gray-900">
-      <div className="container mx-auto px-6">
+    <section id="products" className="relative py-20 md:py-28 bg-gray-900 overflow-hidden">
+      
+      {/* --- 1. Ambient Background Effects (Sama seperti Services) --- */}
+      <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl -translate-y-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none"></div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        
+        {/* Header Section */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 inline-block relative">
             {t.products.title}
+            <div className="absolute -bottom-2 right-0 w-16 h-1 bg-emerald-500 rounded-full"></div>
           </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto mt-4">
             {t.products.subtitle}
           </p>
         </div>
 
-        {/* Slider */}
-        <div className="relative max-w-4xl mx-auto">
-          {/* Kontainer Slide */}
-          <div className="overflow-hidden rounded-xl shadow-2xl">
+        {/* --- Slider Utama --- */}
+        <div className="relative max-w-5xl mx-auto group">
+          
+          {/* Main Card Container */}
+          <div className="overflow-hidden rounded-2xl md:rounded-3xl shadow-2xl bg-gray-800/40 backdrop-blur-sm border border-gray-700/50 relative">
+            
+            {/* Slider Track */}
             <div
-              className="flex transition-transform duration-700 ease-in-out"
+              className="flex transition-transform duration-700 ease-out will-change-transform"
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
               {products.map((product, index) => (
                 <div
                   key={index}
-                  className="w-full flex-shrink-0 bg-gray-800"
-                  style={{ minWidth: "100%" }}
+                  className="w-full flex-shrink-0 min-w-full bg-gray-900/60"
                 >
-                  <div className="flex flex-col md:flex-row ">
-  <div
-    className="w-full md:w-1/2 h-64 md:h-[400px] bg-center bg-cover"
-    style={{backgroundImage: `url('${product.imageUrl}')`}}
-  ></div>
-                    <div className="-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center min-h-64 md:min-h-[400px]">
-                      <h3 className="text-3xl font-bold text-green-400 mb-4">
+                  <div className="flex flex-col md:flex-row h-auto md:h-[500px] ">
+                    
+                    {/* -- Bagian Gambar -- */}
+                    <div className="w-full md:w-1/2 h-64 md:h-full relative overflow-hidden group-hover:shadow-inner">
+                      {/* Image dengan Scale Effect */}
+                      <div 
+                        className="absolute inset-0 bg-center bg-cover transition-transform duration-1000 ease-in-out scale-100 hover:scale-110"
+                        style={{ backgroundImage: `url('${product.imageUrl}')` }}
+                      ></div>
+                      
+                      {/* Overlay Gradient agar teks terbaca jika gambar gelap & transisi halus ke bagian teks */}
+                      <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-gray-900 via-transparent to-transparent opacity-80 md:opacity-100"></div>
+                      
+                      {/* Badge/Tag Keren di pojok gambar */}
+                      <div className="absolute top-4 left-4 bg-black/30 backdrop-blur-md border border-white/10 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-2">
+                        <ShoppingBag size={12} className="text-emerald-400" />
+                        BEST SELLER
+                      </div>
+                    </div>
+
+                    {/* -- Bagian Konten Teks -- */}
+                    <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center  md:bg-transparent relative">
+                      {/* Garis dekoratif vertikal */}
+                      <div className="hidden md:block absolute left-0 top-10 bottom-10 w-[1px] bg-gradient-to-b from-transparent via-gray-700 to-transparent"></div>
+
+                      <h3 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-500 mb-4">
                         {product.title[lang]}
                       </h3>
-                      <p className="text-gray-300 text-lg">
+                      
+                      <p className="text-gray-300 text-lg leading-relaxed mb-8">
                         {product.description[lang]}
                       </p>
+
+                      {/* Tombol Action Dummy */}
+                      <button className="w-fit group/btn flex items-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full font-semibold transition-all duration-300 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40">
+                        Lihat Detail
+                        <ArrowUpRight size={18} className="transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
+                      </button>
                     </div>
+
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Tombol Navigasi Slider */}
+          {/* --- Navigasi Arrows (Floating & Glassy) --- */}
           <button
             onClick={prevSlide}
-            className="absolute top-1/2 left-0 md:-left-16 transform -translate-y-1/2 bg-gray-700/50 p-3 rounded-full text-white hover:bg-emerald-500 transition-all duration-300 z-10"
+            className="absolute top-1/2 -left-4 md:-left-12 transform -translate-y-1/2 bg-gray-800/50 backdrop-blur-md border border-gray-600 text-white p-4 rounded-full hover:bg-emerald-500 hover:border-emerald-500 hover:scale-110 transition-all duration-300 shadow-lg z-20 group-hover:opacity-100 md:opacity-0"
           >
-            <ChevronLeft size={28} />
+            <ChevronLeft size={24} />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute top-1/2 right-0 md:-right-16 transform -translate-y-1/2 bg-gray-700/50 p-3 rounded-full text-white hover:bg-emerald-500 transition-all duration-300 z-10"
+            className="absolute top-1/2 -right-4 md:-right-12 transform -translate-y-1/2 bg-gray-800/50 backdrop-blur-md border border-gray-600 text-white p-4 rounded-full hover:bg-emerald-500 hover:border-emerald-500 hover:scale-110 transition-all duration-300 shadow-lg z-20 group-hover:opacity-100 md:opacity-0"
           >
-            <ChevronRight size={28} />
+            <ChevronRight size={24} />
           </button>
 
-          {/* Dots Navigasi */}
-          <div className="flex justify-center space-x-2 mt-8">
+          {/* --- Navigasi Dots (Indikator) --- */}
+          <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 flex space-x-3">
             {products.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                className={`h-2 rounded-full transition-all duration-500 ${
                   currentIndex === index
-                    ? "bg-emerald-500 scale-125"
-                    : "bg-gray-600"
+                    ? "w-8 bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]"
+                    : "w-2 bg-gray-600 hover:bg-gray-500"
                 }`}
               ></button>
             ))}
           </div>
+
         </div>
       </div>
     </section>
@@ -532,13 +615,13 @@ const AboutUs = () => {
             </div>
             <div className="absolute inset-4 bg-gray-900 rounded-lg shadow-2xl flex items-center justify-center p-6">
               <p className="text-gray-300 text-xl font-mono text-center">
-                <span className="text-green-400">if</span> (<span style={{color: "#993222"}}>problem</span>) &#123;
+                <span className="text-green-400">if</span> (<span style={{ color: "#993222" }}>problem</span>) &#123;
                 <br />
-                &nbsp;&nbsp;Antariks.<span style={{color: "yellow"}}>solve</span>();
+                &nbsp;&nbsp;Antariks.<span style={{ color: "yellow" }}>solve</span>();
                 <br />
                 &#125; <span className="text-green-400">else</span> &#123;
                 <br />
-                &nbsp;&nbsp;Antariks.<span style={{color: "#2866d1"}}>innovate</span>();
+                &nbsp;&nbsp;Antariks.<span style={{ color: "#2866d1" }}>innovate</span>();
                 <br />
                 &#125;
               </p>
@@ -550,64 +633,90 @@ const AboutUs = () => {
   );
 };
 
-
-// (BARU) Komponen Bagian Video
 const VideoSection = () => {
   const { t } = useContext(LangContext);
 
-  // Ganti URL placeholder ini dengan ID video YouTube Anda
-  // const videoUrl1 = '';
-  // const videoUrl2 = '';
-  const videoUrl1 = "https://www.youtube.com/embed/9rwxMmwsUS8?controls=0&autoplay=1&mute=1&playsinline=1&loop=1&playlist=9rwxMmwsUS8"; // Placeholder 1
-  const videoUrl2 = "https://www.youtube.com/embed/1N4LrvYZcoo?controls=0&autoplay=1&mute=1&playsinline=1&loop=1&playlist=1N4LrvYZcoo"; // Placeholder 2
+  const videos = [
+    {
+      url: "https://www.youtube.com/embed/9rwxMmwsUS8?controls=0&autoplay=1&mute=1&playsinline=1&loop=1&playlist=9rwxMmwsUS8",
+      label: "Implementation Video 1"
+    },
+    {
+      url: "https://www.youtube.com/embed/1N4LrvYZcoo?controls=0&autoplay=1&mute=1&playsinline=1&loop=1&playlist=1N4LrvYZcoo",
+      label: "Implementation Video 2"
+    }
+  ];
 
   return (
-    <section id="videos" className="py-16 md:py-28 bg-gray-900">
-      <div className="container mx-auto px-6 max-w-6xl">
-        <div className="text-center mb-12 md:mb-16">
-          <Video
-            size={48}
-            className="text-green-500 mx-auto mb-4"
-            strokeWidth={1.5}
-          />
+    <section id="videos" className="relative py-20 md:py-28  overflow-hidden">
+      
+      {/* --- 1. Ambient Background (Konsisten dengan section lain) --- */}
+
+      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+        
+        {/* Header Section */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center justify-center p-3 mb-4 rounded-full bg-gray-800/50 border border-gray-700 shadow-lg backdrop-blur-sm">
+            <Video size={24} className="text-emerald-400" />
+          </div>
+          
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             {t.video.title}
           </h2>
+          
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
             {t.video.subtitle}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-          {/* Video Kiri */}
-          <div
-            className="relative w-full border border-gray-700 rounded-xl shadow-2xl overflow-hidden"
-            style={{ paddingTop: "56.25%" /* 16:9 Aspect Ratio */ }}
-          >
-            <iframe
-              src={videoUrl1}
-              title="Video 1"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="absolute top-0 left-0 w-full h-full"
-            ></iframe>
-          </div>
+        {/* Grid Video */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          {videos.map((video, index) => (
+            <div key={index} className="group relative">
+              
+              {/* Efek Glow di belakang video saat hover */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-blue-600 rounded-2xl blur opacity-20 group-hover:opacity-70 transition duration-500 group-hover:duration-200"></div>
+              
+              {/* Container Video Utama */}
+              <div className="relative rounded-2xl bg-gray-900 ring-1 ring-gray-700 overflow-hidden shadow-2xl transform transition-transform duration-500 group-hover:scale-[1.01]">
+                
+                {/* Header Bar ala Window (Opsional - memberi kesan aplikasi) */}
+                <div className="h-8 bg-gray-800/90 border-b border-gray-700 flex items-center px-4 space-x-2 backdrop-blur-sm">
+                  <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+                  <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                  <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+                  <span className="ml-2 text-xs text-gray-500 font-mono uppercase tracking-wider">
+                    {video.label}
+                  </span>
+                </div>
 
-          {/* Video Kanan */}
-          <div
-            className="relative w-full border border-gray-700 rounded-xl shadow-2xl overflow-hidden"
-            style={{ paddingTop: "56.25%" /* 16:9 Aspect Ratio */ }}
-          >
-            <iframe
-              src={videoUrl2}
-              title="Video 2"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="absolute top-0 left-0 w-full h-full"
-            ></iframe>
-          </div>
+                {/* Wrapper Iframe 16:9 */}
+                <div className="relative w-full aspect-video bg-black">
+                  <iframe
+                    src={video.url}
+                    title={`Video ${index + 1}`}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="absolute top-0 left-0 w-full h-full opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                  ></iframe>
+
+                  {/* Overlay Dekoratif (Scanline / Vignette) */}
+                  <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-gray-900/40 to-transparent shadow-[inset_0_0_40px_rgba(0,0,0,0.6)]"></div>
+                  
+                  {/* Badge "Live Preview" di pojok video */}
+                  <div className="absolute bottom-4 left-4 flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
+                    <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                    <span className="text-xs font-bold text-white tracking-wide">PREVIEW</span>
+                  </div>
+
+                </div>
+              </div>
+
+              {/* Dekorasi Geometris di luar kotak */}
+              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-br from-emerald-500/10 to-transparent rounded-full blur-xl -z-10"></div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -647,7 +756,7 @@ const VideoSection = () => {
 //             </li>
 //           ))}
 //         </ul>
-        
+
 //       </div>
 //     </section>
 //   );
@@ -715,7 +824,7 @@ const VideoSection = () => {
 const LocationMap = () => {
   const { t } = useContext(LangContext);
   return (
-    <section id="location" className="py-20 md:py-28 ">
+    <section id="location" className="py-20 md:py-28 bg-gray-900/70">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -775,158 +884,20 @@ const LocationMap = () => {
   );
 };
 
-// -- (MODIFIKASI) Komponen Kontak --
-const Contact = () => {
-  const { t } = useContext(LangContext);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [status, setStatus] = useState("idle");
-  const [responseMessage, setResponseMessage] = useState("");
-
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
-    setStatus("loading");
-    setResponseMessage("");
-
-    const tForm = t.contact.form;
-    const formspreeEndpoint = "https://formspree.io/f/mqalnpdr";
-
-    if (!name || !email || !message) {
-      setStatus("error");
-      setResponseMessage(tForm.errorEmpty);
-      return;
-    }
-
-    try {
-      const response = await fetch(formspreeEndpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({ name, email, message }),
-      });
-
-      if (response.ok) {
-        setStatus("success");
-        setResponseMessage(tForm.success);
-        setName("");
-        setEmail("");
-        setMessage("");
-      } else {
-        setStatus("error");
-        setResponseMessage(tForm.error);
-      }
-    } catch (error) {
-      setStatus("error");
-      setResponseMessage(tForm.error);
-    }
-  };
-
-  return (
-    <section id="contact" className="py-20 md:py-28 bg-gray-950">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            {t.contact.title}
-          </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            {t.contact.subtitle}
-          </p>
-        </div>
-
-        <div className="max-w-2xl mx-auto">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium text-gray-300 mb-2"
-              >
-                {t.contact.form.name}
-              </label>
-              <input
-                type="text"
-                id="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all"
-                placeholder={t.contact.form.namePlaceholder}
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-300 mb-2"
-              >
-                {t.contact.form.email}
-              </label>
-              <input
-                type="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all"
-                placeholder={t.contact.form.emailPlaceholder}
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="message"
-                className="block text-sm font-medium text-gray-300 mb-2"
-              >
-                {t.contact.form.message}
-              </label>
-              <textarea
-                id="message"
-                rows={5}
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all"
-                placeholder={t.contact.form.messagePlaceholder}
-              ></textarea>
-            </div>
-            <div className="text-center">
-              <button
-                type="submit"
-                disabled={status === "loading"}
-                className="bg-emerald-600 text-white py-3 px-10 rounded-full text-lg font-semibold shadow-lg shadow-green-600/30 transition-all duration-300 hover:bg-emerald-500 hover:shadow-xl hover:shadow-green-500/50 hover:-translate-y-1 transform disabled:bg-gray-500 disabled:cursor-not-allowed"
-              >
-                {status === "loading"
-                  ? t.contact.form.loading
-                  : t.contact.form.submit}
-              </button>
-            </div>
-          </form>
-
-          {/* Status Messages */}
-          <div className="mt-6 text-center">
-            {status === "success" && (
-              <p className="text-green-400">{responseMessage}</p>
-            )}
-            {status === "error" && (
-              <p className="text-red-400">{responseMessage}</p>
-            )}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
 
 
 // -- Komponen Utama App --
 export default function App() {
-const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-useEffect(() => {
-  setMounted(true);
-}, []);
-if (!mounted) {
-  return (
-    <section className="min-h-screen bg-black"></section> // skeleton aman
-  );
-}
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  if (!mounted) {
+    return (
+      <section className="min-h-screen bg-black"></section> // skeleton aman
+    );
+  }
   return (
     <>
       {/* ERROR: Komponen <Head> dari 'next/head' tidak tersedia.
@@ -1021,6 +992,7 @@ if (!mounted) {
         <Header />
         <main>
           <Hero />
+          
           <VideoSection />
           <Services />
           {/* (BARU) Menambahkan TechStack */}
@@ -1031,7 +1003,6 @@ if (!mounted) {
           {/* <Partners /> */}
           {/* <TestimonialSlider /> */}
           <LocationMap />
-          <Contact />
         </main>
         <Footer />
       </div>

@@ -170,6 +170,144 @@ const LocationPageContent = () => {
   );
 };
 
+// -- (MODIFIKASI) Komponen Kontak --
+const Contact = () => {
+  const { t } = useContext(LangContext);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [status, setStatus] = useState("idle");
+  const [responseMessage, setResponseMessage] = useState("");
+
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    setStatus("loading");
+    setResponseMessage("");
+
+    const tForm = t.contact.form;
+    const formspreeEndpoint = "https://formspree.io/f/mqalnpdr";
+
+    if (!name || !email || !message) {
+      setStatus("error");
+      setResponseMessage(tForm.errorEmpty);
+      return;
+    }
+
+    try {
+      const response = await fetch(formspreeEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({ name, email, message }),
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        setResponseMessage(tForm.success);
+        setName("");
+        setEmail("");
+        setMessage("");
+      } else {
+        setStatus("error");
+        setResponseMessage(tForm.error);
+      }
+    } catch (error) {
+      setStatus("error");
+      setResponseMessage(tForm.error);
+    }
+  };
+
+  return (
+    <section id="contact" className="py-20 md:py-28 bg-gray-900/70">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            {t.contact.title}
+          </h2>
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+            {t.contact.subtitle}
+          </p>
+        </div>
+
+        <div className="max-w-2xl mx-auto">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-300 mb-2"
+              >
+                {t.contact.form.name}
+              </label>
+              <input
+                type="text"
+                id="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all"
+                placeholder={t.contact.form.namePlaceholder}
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-300 mb-2"
+              >
+                {t.contact.form.email}
+              </label>
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all"
+                placeholder={t.contact.form.emailPlaceholder}
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="message"
+                className="block text-sm font-medium text-gray-300 mb-2"
+              >
+                {t.contact.form.message}
+              </label>
+              <textarea
+                id="message"
+                rows={5}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all"
+                placeholder={t.contact.form.messagePlaceholder}
+              ></textarea>
+            </div>
+            <div className="text-center">
+              <button
+                type="submit"
+                disabled={status === "loading"}
+                className="bg-emerald-600 text-white py-3 px-10 rounded-full text-lg font-semibold shadow-lg shadow-green-600/30 transition-all duration-300 hover:bg-emerald-500 hover:shadow-xl hover:shadow-green-500/50 hover:-translate-y-1 transform disabled:bg-gray-500 disabled:cursor-not-allowed"
+              >
+                {status === "loading"
+                  ? t.contact.form.loading
+                  : t.contact.form.submit}
+              </button>
+            </div>
+          </form>
+
+          {/* Status Messages */}
+          <div className="mt-6 text-center">
+            {status === "success" && (
+              <p className="text-green-400">{responseMessage}</p>
+            )}
+            {status === "error" && (
+              <p className="text-red-400">{responseMessage}</p>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 // -- Komponen Halaman Utama --
 export default function LocationPage() {
 
@@ -179,6 +317,7 @@ export default function LocationPage() {
       <Header />
       <main className="mt-10 md:mt-0">
         <LocationPageContent />
+        <Contact />
       </main>
       <Footer />
     </div>
