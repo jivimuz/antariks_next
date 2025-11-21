@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { LangProvider } from "@/context/langContext";
+import FloatChat from "@/components/addOn/floatChatComponent";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +31,7 @@ export default function RootLayout({
       >
       <LangProvider>
         {children}
+        <FloatChat/>
     </LangProvider>
       </body>
     </html>
