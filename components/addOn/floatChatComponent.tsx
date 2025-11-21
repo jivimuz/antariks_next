@@ -380,8 +380,8 @@ export default function FloatChat() {
         onClick={toggleChat}
         className={`fixed bottom-6 right-6 z-[9998] w-16 h-16 flex items-center justify-center rounded-full shadow-2xl shadow-green-900/20 transition-all duration-300 transform hover:scale-105 active:scale-95 ${
             isOpen 
-                ? "bg-red-800 rotate-90 ring-4 ring-slate-200" 
-                : "bg-gradient-to-br from-green-600 to-green-800 hover:to-green-700 animate-bounce-slow ring-4 ring-green-100"
+                ? "bg-red-800 rotate-90 " 
+                : "bg-gradient-to-br from-green-600 to-green-800 hover:to-green-700 animate-bounce-slow "
         }`}
         aria-label="Toggle Chat"
       >
