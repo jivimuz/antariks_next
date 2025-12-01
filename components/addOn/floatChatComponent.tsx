@@ -13,7 +13,7 @@ const TypingIndicator = () => (
 
 export default function FloatChat() {
   // Ganti dengan nomor WhatsApp Bisnis Antariks
-  const phoneNumber = "6282120741970"; 
+  const phoneNumber = "6281120030163"; 
 
   // Definisi tipe pesan
   type Message = {
