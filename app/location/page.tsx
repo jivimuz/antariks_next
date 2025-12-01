@@ -122,17 +122,17 @@ const LocationPageContent = () => {
                     />
                     <div className="text-gray-300">
                       <span className="font-semibold block">{t.location.email}</span>
-                      <a
+                      {/* <a
                         href="mailto:antariks@jivimuz.my.id"
                         className="hover:text-green-400 transition-colors"
                       >
                         - antariks@jivimuz.my.id <br />
-                      </a>
+                      </a> */}
                        <a
                         href="mailto:antariks.corp@gmail.com"
                         className="hover:text-green-400 transition-colors"
                       >
-                        - antariks.corp@gmail.com
+                        antariks.corp@gmail.com
                       </a>
                     </div>
                   </div>
