@@ -147,7 +147,7 @@ const LocationPageContent = () => {
                         href="tel:+6282120741970"
                         className="hover:text-green-400 transition-colors"
                       >
-                        +62 821-2074-1970 (Jivi)
+                        +62 811-2003-0163 (Gilang)
                       </a>
                     </div>
                   </div>
