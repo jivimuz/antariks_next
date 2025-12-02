@@ -116,17 +116,17 @@ const products = [
     },
     imageUrl: "https://img.freepik.com/free-photo/business-meeting-office_1268-21531.jpg",
   },
-  {
-    title: {
-      id: "Patient Registration & Hospital Info App",
-      en: "Patient Registration & Hospital Info App",
-    },
-    description: {
-      id: "Aplikasi mobile untuk registrasi pasien dan informasi rumah sakit, mempermudah booking janji, akses rekam medis, dan update penting.",
-      en: "A mobile application for patient registration and hospital information, streamlining appointments, medical record access, and important updates.",
-    },
-    imageUrl: "https://img.freepik.com/free-photo/happiness-cheerful-elderly-woman-men-talking-with-female-caregiver-nurse-doctor-having-health-checking-consult-living-areacaretakers-with-senior-couple-sitting-living-room-nursing-home_609648-3092.jpg",
-  },
+  // {
+  //   title: {
+  //     id: "Patient Registration & Hospital Info App",
+  //     en: "Patient Registration & Hospital Info App",
+  //   },
+  //   description: {
+  //     id: "Aplikasi mobile untuk registrasi pasien dan informasi rumah sakit, mempermudah booking janji, akses rekam medis, dan update penting.",
+  //     en: "A mobile application for patient registration and hospital information, streamlining appointments, medical record access, and important updates.",
+  //   },
+  //   imageUrl: "https://img.freepik.com/free-photo/happiness-cheerful-elderly-woman-men-talking-with-female-caregiver-nurse-doctor-having-health-checking-consult-living-areacaretakers-with-senior-couple-sitting-living-room-nursing-home_609648-3092.jpg",
+  // },
 ];
 
 const testimonials = [
