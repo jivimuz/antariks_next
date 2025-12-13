@@ -279,7 +279,7 @@ const JobDetailContent = () => {
                {!isExpired ? (
                   <button
                     onClick={() =>
-                      window.location.href = `mailto:hr@antariks.id?subject=Lamaran: ${job.title}`
+                      window.location.href = `mailto:antariks.recruitment@gmail.com?subject=Lamaran: ${job.title}`
                     }
                     className="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-xl transition-all shadow-lg shadow-green-900/20 text-center"
                   >
@@ -340,7 +340,7 @@ const JobDetailContent = () => {
                     <MapPin className="text-gray-500 mt-0.5" size={18} />
                     <div>
                       <span className="block text-gray-500 text-xs uppercase font-semibold">{t.detail.location}</span>
-                      <span className="text-gray-200">Remote / Cirebon (Hybrid)</span>
+                      <span className="text-gray-200">{job.location ?? ' - '}</span>
                     </div>
                   </li>
                 </ul>
