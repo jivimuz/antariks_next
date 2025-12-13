@@ -53,7 +53,7 @@ const Header = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden lg:flex items-center space-x-6">
             {t.navLinks.map((link) => (
               <div key={link.label} className="relative group">
                 <a
@@ -106,7 +106,7 @@ const Header = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button onClick={() => setIsMenuOpen(true)} className="text-white">
               <Menu size={28} />
             </button>
@@ -118,7 +118,7 @@ const Header = () => {
       <div
         className={`fixed top-0 right-0 w-3/4 max-w-sm h-full bg-gray-900 shadow-2xl z-50 transform transition-transform duration-300 ease-in-out ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
-        } md:hidden`}
+        } lg:hidden`}
       >
         <div className="flex justify-end p-6">
           <button onClick={() => setIsMenuOpen(false)} className="text-white">
