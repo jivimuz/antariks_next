@@ -839,10 +839,10 @@ const LocationMap = () => {
           </p>
         </div>
 
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16  ">
           {/* Sisi Kiri: Detail Alamat */}
           <div className="lg:w-1/2 w-full">
-            <div className="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700">
+            <div className="bg-gray-800 py-12 px-10 md:py-22  rounded-xl shadow-lg border border-gray-700">
               <div className="flex items-start gap-4">
                 <MapPin
                   size={40}
@@ -878,7 +878,8 @@ const LocationMap = () => {
               allowFullScreen={true}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="rounded-xl shadow-2xl border border-gray-700"
+                               className="rounded-xl shadow-2xl border border-gray-700 border-0  inset-0 filter grayscale invert contrast-75 opacity-80 hover:opacity-100 transition-opacity" 
+
             ></iframe>
           </div>
         </div>

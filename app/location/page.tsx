@@ -84,7 +84,7 @@ const LocationPageContent = () => {
                 allowFullScreen={true}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="rounded-xl shadow-2xl border border-gray-700"
+                 className="rounded-xl shadow-2xl border border-gray-700 border-0  inset-0 filter grayscale invert contrast-75 opacity-80 hover:opacity-100 transition-opacity" 
               ></iframe>
             </div>
 
