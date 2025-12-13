@@ -34,6 +34,7 @@ export const allContent = {
       
       { href: "/legality", label: "Legalitas", children: [] },
       { href: "/location", label: "Kontak Kami", children: [] },
+      { href: "https://career.antariks.id/", label: "Career", children: [] },
     ],
     contactCta: "Konsultasi Sekarang",
     hero: {
@@ -279,6 +280,8 @@ sc5: 'Dan sektor lainnya.',
      
       { href: "/legality", label: "Legality", children: [] },
       { href: "/location", label: "Contact Us", children: [] },
+      { href: "https://career.antariks.id/", label: "Karir", children: [] },
+
     ],
     contactCta: "Consult Now",
     hero: {
