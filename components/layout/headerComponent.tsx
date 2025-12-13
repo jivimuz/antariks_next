@@ -154,7 +154,7 @@ const Header = () => {
                           <a
                             key={child.label ?? child.href ?? Math.random()}
                             href={child?.href ?? "#"}
-                            target={child?.href?.includes("career.antariks.id") ? "_top" : undefined}
+                            target={ "_top"}
                             className="block text-gray-400 text-lg"
                             onClick={() => setIsMenuOpen(false)}
                           >
@@ -168,7 +168,7 @@ const Header = () => {
                   /* If no children -> normal link (will navigate) */
                   <a
                     href={link?.href ?? "#"}
-                    target={link?.href?.includes("career.antariks.id") ? "_top" : undefined}
+                    target={ "_top" }
                     className="text-gray-200 text-xl block w-full text-left"
                     onClick={() => setIsMenuOpen(false)}
                   >
