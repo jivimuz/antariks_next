@@ -199,7 +199,7 @@ const CareerPageContent = () => {
       setIsLoading(true);
       setIsError(false);
       
-      const response = await fetchJobsApi(pagination.page, pagination.limit, activeSearch, searchKeyword);
+      const response = await fetchJobsApi(pagination.page, pagination.limit, activeSearch, locationKeyword);
       
       if (response.error) {
         setIsError(true);
