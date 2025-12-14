@@ -191,15 +191,18 @@ const CareerPageContent = () => {
   // State untuk Pencarian
   const [searchKeyword, setSearchKeyword] = useState("");
   const [locationKeyword, setLocationKeyword] = useState("");
-  const [activeSearch, setActiveSearch] = useState(""); // Keyword yang sedang aktif digunakan fetch
 
   // Efek Fetch Data
   useEffect(() => {
-    const fetchData = async () => {
+    
+
+    fetchData();
+  }, [pagination.page ]); // Refetch jika page berubah atau tombol cari diklik
+const fetchData = async () => {
       setIsLoading(true);
       setIsError(false);
       
-      const response = await fetchJobsApi(pagination.page, pagination.limit, activeSearch, locationKeyword);
+      const response = await fetchJobsApi(pagination.page, pagination.limit, searchKeyword, locationKeyword);
       
       if (response.error) {
         setIsError(true);
@@ -214,10 +217,6 @@ const CareerPageContent = () => {
       }
       setIsLoading(false);
     };
-
-    fetchData();
-  }, [pagination.page, activeSearch]); // Refetch jika page berubah atau tombol cari diklik
-
   // Handler Pagination
   const nextPage = () => {
     if (pagination.page < pagination.totalPages && !isLoading) {
@@ -237,7 +236,7 @@ const CareerPageContent = () => {
   const handleSearch = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     setPagination(prev => ({ ...prev, page: 1 })); // Reset ke halaman 1 saat search baru
-    setActiveSearch(searchKeyword || locationKeyword);
+    fetchData()
   };
 
   return (
