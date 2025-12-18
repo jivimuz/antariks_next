@@ -858,10 +858,10 @@ const LocationMap = () => {
                     {t.location.city}
                   </p>
                   <p className="text-gray-400 mb-1">
-                    <strong>{t.location.email}</strong><br /> antariks.corp@gmail.com
+                    <strong>{t.location.email}</strong><br /> admin@antariks.id <br /> antariks.corp@gmail.com
                   </p>
                   <p className="text-gray-400">
-                    <strong>{t.location.phone}</strong><br /> +62 811-2003-0163 (Gilang)
+                    <strong>{t.location.phone}</strong><br /> +62 811-2003-0163 (Sales & Marketing) <br /> +62 821-2074-1970 (Support)
                   </p>
                 </div>
               </div>

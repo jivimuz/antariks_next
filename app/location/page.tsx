@@ -122,18 +122,19 @@ const LocationPageContent = () => {
                     />
                     <div className="text-gray-300">
                       <span className="font-semibold block">{t.location.email}</span>
-                      {/* <a
+                      <a
                         href="mailto:antariks@jivimuz.my.id"
                         className="hover:text-green-400 transition-colors"
                       >
-                        - antariks@jivimuz.my.id <br />
-                      </a> */}
+                        - admin@antariks.id 
+                      </a><br />
                        <a
                         href="mailto:antariks.corp@gmail.com"
                         className="hover:text-green-400 transition-colors"
                       >
-                        antariks.corp@gmail.com
+                        - antariks.corp@gmail.com
                       </a>
+
                     </div>
                   </div>
                   <div className="flex items-center gap-4 text-lg">
@@ -147,7 +148,13 @@ const LocationPageContent = () => {
                         href="tel:+6282120741970"
                         className="hover:text-green-400 transition-colors"
                       >
-                        +62 811-2003-0163 (Gilang)
+                        +62 811-2003-0163 (Sales & Marketing)
+                      </a>
+                        <a
+                        href="tel:+6282120741970"
+                        className="hover:text-green-400 transition-colors"
+                      >
+                        +62 821-2084-1970 (Support)
                       </a>
                     </div>
                   </div>
