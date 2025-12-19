@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { LangProvider } from "@/context/langContext";
 import FloatChat from "@/components/addOn/floatChatComponent";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +31,21 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
       <LangProvider>
+        <Script 
+          src="https://www.googletagmanager.com/gtag/js?id=G-5W6DGVBMJR" 
+          strategy="afterInteractive" 
+        />
+        
+        {/* Script 2: Konfigurasi inline */}
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-5W6DGVBMJR');
+          `}
+        </Script>
         {children}
         <FloatChat/>
     </LangProvider>
