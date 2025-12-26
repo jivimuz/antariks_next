@@ -26,7 +26,7 @@ import Header from '@/components/layout/headerComponent';
 // Data bahasa disimpan sebagai konstanta di luar komponen
 
 
-const totalSlides = 9;
+const totalSlides = 8;
 // Komponen Kontrol Navigasi
 const PresentationControls = ({ current, total, lang, onPrev, onNext, onPrint }: { current: number; total: number; lang: 'id' | 'en'; onPrev: () => void; onNext: () => void; onPrint: () => void; }) => {
   const t = allContent[lang];
@@ -85,7 +85,7 @@ const SlideFooter = () => (
     <div className="absolute bottom-6 left-16 right-16 z-20 flex justify-center items-center gap-x-8 print:left-8 print:right-8 print:bottom-4">
         <div className="flex items-center gap-2 text-sm text-gray-400 print:text-black">
             <Globe size={14} className="text-[#157557]" />
-            <span className="print:text-black">antariks.vercel.app</span>
+            <span className="print:text-black">antariks.id</span>
         </div>
         <div className="flex items-center gap-2 text-sm text-gray-400 print:text-black">
             <Mail size={14} className="text-[#157557]" />
@@ -384,8 +384,7 @@ export default function App() {
                     <SlideFooter /> {/* BARU: Footer ditambahkan */}
                 </div>
 
-                {/* Slide 8: Mitra Kami */}
-                <div id="slide8" className={getSlideClasses(8)}>
+                {/* <div id="slide8" className={getSlideClasses(8)}>
                     <BlobEffect />
                     <h2 className={slideTitleClasses}>{t.slide8.title}</h2>
                     <div className="flex flex-row  mt-20  items-center justify-center mx-20" >
@@ -396,13 +395,13 @@ export default function App() {
                                 <img src={`/image/partners/pt2.png`} alt={`Logo Mitra `} className="max-w-full max-h-full object-contain" />
                             </div>
                     </div>
-                    <SlideFooter /> {/* BARU: Footer ditambahkan */}
-                </div>
+                    <SlideFooter />
+                </div> */}
 
                
                 {/* Slide 9: Kontak */}
                 {/* BARU: Tata letak diubah untuk QR Code, dan SlideFooter dihapus */}
-                <div id="slide9" className={`items-center justify-center text-center ${getSlideClasses(9)}`}>
+                <div id="slide9" className={`items-center justify-center text-center ${getSlideClasses(8)}`}>
                     <BlobEffect />
                     <div className="relative z-10 w-full flex flex-col items-center">
                         <h2 className="text-8xl font-bold text-white print:text-black">{t.slide9.title}</h2>
@@ -421,7 +420,7 @@ export default function App() {
                                     <Phone className="text-[#157557]" />
                                     <span>{t.slide9.contactPhone}</span>
                                 </div>
-                                 <a href='https://antariks.vercel.app' target='_blank' className="flex items-center gap-3">
+                                 <a href='https://antariks.id' target='_blank' className="flex items-center gap-3">
                                     <Globe className="text-[#157557]" />
                                     <span>{t.slide9.contactWeb}</span>
                                 </a>

@@ -150,6 +150,7 @@ const LocationPageContent = () => {
                       >
                         +62 811-2003-0163 (Sales & Marketing)
                       </a>
+                      <br />
                         <a
                         href="tel:+6282120741970"
                         className="hover:text-green-400 transition-colors"

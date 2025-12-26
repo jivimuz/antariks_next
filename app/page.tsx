@@ -997,7 +997,7 @@ export default function App() {
         <main>
           <Hero />
           
-          <VideoSection />
+          {/* <VideoSection /> */}
           <Services />
           {/* (BARU) Menambahkan TechStack */}
           <TechStack />

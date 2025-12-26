@@ -209,7 +209,7 @@ sc5: 'Dan sektor lainnya.',
             subtitle: "Siap untuk meluncurkan proyek Anda berikutnya ke level stratosfer?",
             contactEmail: "antariks.corp@gmail.com",
             contactPhone: "+62 821 2074 1970",
-            contactWeb: "https://antariks.vercel.app",
+            contactWeb: "https://antariks.id",
             qrLabel: "Pindai saya" // BARU: Teks untuk
         },
           chatbot: {
@@ -455,7 +455,7 @@ project3Desc: "Development of a modern POS system for retail and F&B with invent
             subtitle: "Ready to launch your next project into the stratosphere?",
               contactEmail: "antariks.corp@gmail.com",
             contactPhone: "+62 821 2074 1970",
-            contactWeb: "https://antariks.vercel.app",
+            contactWeb: "https://antariks.id",
             qrLabel: "Scan me" // BARU: Teks untuk
         },  
         chatbot: {
