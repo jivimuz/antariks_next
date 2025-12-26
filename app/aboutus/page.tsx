@@ -409,7 +409,7 @@ const AboutUsPageContent = () => {
           </h2>
           <p className="text-lg text-gray-300 mb-8">{t.cta.subtitle}</p>
           <a
-            href="/chatbot" // Arahkan ke halaman chatbot
+            href="/chat" // Arahkan ke halaman chatbot
             className="bg-green-600 text-white py-3 px-8 rounded-full text-lg font-semibold shadow-lg shadow-green-600/30 transition-all duration-300 hover:bg-green-500 hover:shadow-xl hover:shadow-green-500/50 hover:-translate-y-1 transform"
           >
             {t.cta.button}
