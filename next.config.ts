@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
           {
             key: "Content-Security-Policy",
             value:
-              "frame-ancestors 'self' https://antariks.id https://wwww.antariks.id http://wwww.antariks.id http://antariks.id",
+              "frame-ancestors 'self' https://antariks.id https://www.antariks.id",
           },
         ],
       },
