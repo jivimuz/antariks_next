@@ -1,5 +1,3 @@
-import type { NextConfig } from "next";
-
 const nextConfig: NextConfig = {
   async headers() {
     return [
@@ -8,11 +6,8 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "Content-Security-Policy",
-            value: "frame-ancestors 'self' https://antariks.id",
-          },
-          {
-            key: "X-Frame-Options",
-            value: "SAMEORIGIN",
+            value:
+              "frame-ancestors 'self' https://antariks.id https://wwww.antariks.id http://wwww.antariks.id http://antariks.id",
           },
         ],
       },
