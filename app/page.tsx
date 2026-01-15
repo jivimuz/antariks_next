@@ -871,7 +871,7 @@ const LocationMap = () => {
           {/* Sisi Kanan: Peta */}
           <div className="lg:w-1/2 w-full h-80 lg:h-96">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3384.937982929093!2d108.52618479599339!3d-6.711641494594766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6ee3004c0bdb1b%3A0xe3d7a1cd0042f4f1!2sAntariks!5e0!3m2!1sid!2sid!4v1763516652987!5m2!1sid!2sid"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2801.7881805752877!2d108.51892488531806!3d-6.729918276038135!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6f1f34de8c08db%3A0x905c82594ebb6688!2sAntariks%20Global%20Technology!5e0!3m2!1sid!2sid!4v1768450410500!5m2!1sid!2sid"
               width="100%"
               height="100%"
               style={{ border: 0 }}
