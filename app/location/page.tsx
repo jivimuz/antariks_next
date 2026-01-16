@@ -71,11 +71,16 @@ const LocationPageContent = () => {
   return (
     <>
       {/* Konten Halaman */}
-      <section className="pt-32 pb-16 md:pt-48 md:pb-24 bg-gray-950">
+      <section className="pt-32 pb-16 md:pt-48 md:pb-24 bg-gray-950 bg-cover relative bg-center min-h-screen flex parallax"
+      // (DARI KODE ANDA) Menambahkan style backgroundImage
+      style={{
+        backgroundImage: "url(/image/office.jpeg)"
+      }}>
+      <div className="absolute inset-0 bg-gray-900/70 z-10"></div>
         <div className="container mx-auto px-6 max-w-6xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 ">
             {/* Sisi Kiri: Peta */}
-            <div className="w-full h-96 lg:h-auto min-h-[500px]">
+            <div className="w-full h-96 lg:h-auto min-h-[500px]  z-20">
               <iframe
                 src={mapUrl}
                 width="100%"
@@ -89,7 +94,7 @@ const LocationPageContent = () => {
             </div>
 
             {/* Sisi Kanan: Info Kontak */}
-            <div className="flex flex-col justify-center">
+            <div className="flex flex-col justify-center  z-20">
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4">
                 {t.location.title}
               </h1>
