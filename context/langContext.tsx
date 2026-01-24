@@ -43,6 +43,7 @@ export const allContent = {
       subtitle:
         "Kami adalah arsitek digital Anda, mengubah ide kompleks menjadi perangkat lunak yang elegan, skalabel, dan aman.",
       cta: "Konsultasi Sekarang",
+      ctp: "Dapatkan Harga Pemula",
     },
     services: {
       title: "Layanan Unggulan Kami",
@@ -290,6 +291,8 @@ sc5: 'Dan sektor lainnya.',
       subtitle:
         "We are your digital architects, turning complex ideas into scalable software.",
       cta: "Consult Now",
+      ctp: "Get Starter Price",
+
     },
     services: {
       title: "Our Featured Services",

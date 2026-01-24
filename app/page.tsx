@@ -260,6 +260,47 @@ const Hero = () => {
         <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-xl mx-auto">
           {t.hero.subtitle}
         </p>
+           <div className="flex flex-col md:flex-row w-full">
+ <a
+  href="https://starter.antariks.id"
+  className="
+    relative overflow-hidden
+    bg-gradient-to-r from-yellow-500 via-red-500 to-orange-500
+    m-1 w-full text-white py-3 px-8 rounded-full text-lg font-extrabold
+    shadow-lg shadow-red-500/40
+    ring-2 ring-red-300/40
+    transition-all duration-300
+    hover:shadow-xl hover:shadow-red-500/60
+    hover:-translate-y-1 active:translate-y-0
+  "
+>
+  {/* Shimmer */}
+  <span className="
+    pointer-events-none absolute inset-0
+    bg-[linear-gradient(110deg,transparent,rgba(255,255,255,.35),transparent)]
+    translate-x-[-120%]
+    animate-[shimmer_2.2s_infinite]
+  " />
+
+  {/* Promo badge */}
+  <span className="
+    absolute top-2 right-2
+    bg-red-500 text-white text-[10px]
+    font-black px-2 py-1 rounded-full
+    shadow-md shadow-red-500/30
+    rotate-12
+  ">
+    PROMO
+  </span>
+
+  {/* Content */}
+  <span className="relative z-10 flex items-center justify-center gap-2">
+    {t.hero.ctp}
+    <span>→</span>
+  </span>
+</a>
+      </div>
+      <br />
         <div className="flex flex-col md:flex-row w-full">
           <a
             href="/chat"
@@ -275,7 +316,7 @@ const Hero = () => {
             Company Profile
           </a>
         </div>
-
+     
       </div>
       
     </section>

@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Antariks - Always be your it solution",
-  description: "perusahaan teknologi yang berfokus pada solusi digital modern—mulai dari pengembangan aplikasi, sistem otomatisasi, hingga layanan AI yang scalable. Kami membantu bisnis bertransformasi lebih cepat, lebih efisien, dan lebih cerdas melalui teknologi yang dirancang dengan presisi dan pengalaman pengguna sebagai prioritas. Vendor Aplikasi",
+  description: "perusahaan teknologi yang berfokus pada solusi digital modern—mulai dari pengembangan aplikasi, sistem otomatisasi, hingga layanan AI yang scalable. Kami membantu bisnis bertransformasi lebih cepat, lebih efisien, dan lebih cerdas melalui teknologi yang dirancang dengan presisi dan pengalaman pengguna sebagai prioritas. Vendor Aplikasi. basecamp kami berada di cirebon",
 };
 
 export default function RootLayout({
