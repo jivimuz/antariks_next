@@ -149,11 +149,18 @@ const LocationPageContent = () => {
                     />
                     <div className="text-gray-300">
                       <span className="font-semibold block">{t.location.phone}</span>
+                       <a
+                        href="tel:+6282120741970"
+                        className="hover:text-green-400 transition-colors"
+                      >
+                       +62 813-9580-425 (Sales & Marketing)
+                      </a>
+                      <br />
                       <a
                         href="tel:+6282120741970"
                         className="hover:text-green-400 transition-colors"
                       >
-                        +62 811-2003-0163 (Sales & Marketing)
+                        +62 811-2003-0163 (Sales & Marketing 2)
                       </a>
                       <br />
                         <a
