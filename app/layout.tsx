@@ -4,6 +4,7 @@ import "./globals.css";
 import { LangProvider } from "@/context/langContext";
 import FloatChat from "@/components/addOn/floatChatComponent";
 import Script from "next/script";
+import IframeRouteBridge from "@/components/addOn/IframeRouteBridge";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,7 +23,7 @@ const siteUrl = "https://antariks.id";
 const siteName = "Antariks";
 const defaultTitle = "Antariks - Always be your IT solution";
 const defaultDescription =
-  "Antariks adalah perusahaan teknologi yang berfokus pada solusi digital modern—mulai dari pengembangan aplikasi, sistem otomatisasi, hingga layanan AI yang scalable. Kami membantu bisnis bertransformasi lebih cepat, lebih efisien, dan lebih cerdas melalui teknologi yang dirancang dengan presisi dan pengalaman pengguna sebagai prioritas. Basecamp: Cirebon.";
+  "Antariks Global Technology adalah perusahaan teknologi yang berfokus pada solusi digital modern—mulai dari pengembangan aplikasi, sistem otomatisasi, hingga layanan AI yang scalable. Kami membantu bisnis bertransformasi lebih cepat, lebih efisien, dan lebih cerdas melalui teknologi yang dirancang dengan presisi dan pengalaman pengguna sebagai prioritas. Basecamp: Cirebon.";
 
 // ✅ viewport terpisah di Next App Router
 export const viewport: Viewport = {
@@ -58,9 +59,11 @@ export const metadata: Metadata = {
     "AI Solutions",
     "Cirebon",
     "Antariks",
+    "Antariks Global Technology",
+    "Jivi Muzaqi Guntur",
   ],
   authors: [{ name: "Antariks", url: siteUrl }],
-  creator: "Antariks",
+  creator: "Jivi Muzaqi Guntur",
   publisher: "Antariks",
 
   // ✅ Canonical & language alternates (kalo kamu ada /en dll)
@@ -68,7 +71,7 @@ export const metadata: Metadata = {
     canonical: "/",
     languages: {
       "id-ID": "/",
-      "en-US": "/en", // kalau belum punya, hapus aja biar gak 404
+      // "en-US": "/en", // kalau belum punya, hapus aja biar gak 404
     },
   },
 
@@ -179,8 +182,8 @@ export default function RootLayout({
                   description: defaultDescription,
                   sameAs: [
                     // isi kalau ada:
-                    // "https://www.linkedin.com/company/antariks",
-                    // "https://www.instagram.com/antariks",
+                    "https://www.linkedin.com/company/antariks",
+                    "https://www.instagram.com/antariks.corp",
                   ],
                 },
                 {
@@ -201,7 +204,7 @@ export default function RootLayout({
               ],
             })}
           </Script>
-
+ <IframeRouteBridge />
           {children}
           <FloatChat />
         </LangProvider>
