@@ -30,6 +30,10 @@ export const allContent = {
           label:'Multi Level',
           href:'/products/multi_level',
         },
+          {
+          label:'Health Care',
+          href:'/products/healthcare',
+        },
       ] },
       
       { href: "/legality", label: "Legalitas", children: [] },
@@ -276,6 +280,10 @@ sc5: 'Dan sektor lainnya.',
         {
           label:'Multi Level',
           href:'/products/multi_level',
+        },
+          {
+          label:'Health Care',
+          href:'/products/healthcare',
         },
       ] },
      

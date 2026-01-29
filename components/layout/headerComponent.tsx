@@ -1,12 +1,17 @@
-"use client"
-import LangContext from "@/context/langContext";
-import { Menu, X } from "lucide-react";
-import { useContext, useState } from "react";
+"use client";
+import React, { useState, useContext } from "react";
+// Import dengan relative path yang sesuai struktur folder
+import LangContext from "../../context/langContext"; 
+import { Menu, X, ChevronDown } from "lucide-react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const { lang, setLang, t } = useContext(LangContext);
+  
+  const context = useContext(LangContext);
+  const lang = context?.lang || "id";
+  const setLang = context?.setLang || (() => {});
+  const t = context?.t || { navLinks: [], contactCta: "Loading..." };
 
   const toggleLang = () => {
     setLang(lang === "id" ? "en" : "id");
@@ -14,12 +19,18 @@ const Header = () => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full bg-gray-950 bg-opacity-80 backdrop-blur-md z-50 shadow-lg shadow-green-900/10 print:opacity-0">
-        <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-
-          {/* Logo */}
-          <a href="../">
-            <svg viewBox="0 0 600 200" width="300" xmlns="http://www.w3.org/2000/svg">
+      <style jsx>{`
+        @import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@600;700&display=swap");
+        .font-exo { font-family: 'Exo 2', sans-serif; }
+      `}</style>
+      
+      <header className="fixed top-0 left-0 w-full bg-gray-950/95 backdrop-blur-md z-50 shadow-lg shadow-green-900/10 print:opacity-0 border-b border-gray-800">
+        <nav className="container mx-auto px-4 md:px-6 h-20 flex items-center justify-between gap-4">
+          
+          {/* 1. ZONA KIRI: Logo */}
+          <div className="flex-shrink-0">
+           <a href="../">
+            <svg viewBox="0 0 600 200" width="250" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <linearGradient id="logoGradient">
                   <stop offset="0%" stopColor="#394531" />
@@ -51,164 +62,173 @@ const Header = () => {
               <text x="50%" y="75%" className="tagline">Always be your IT solution</text>
             </svg>
           </a>
+          </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-6">
-            {t.navLinks.map((link) => (
-              <div key={link.label} className="relative group">
-                <a
-                  href={link?.href ?? "#"}
-                  className="text-gray-300 relative group-hover:text-white transition"
-                >
-                  {link.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-400 transition-all duration-300 group-hover:w-full"></span>
-                </a>
+          {/* 2. ZONA TENGAH: Menu Navigasi */}
+          <div className="hidden lg:flex flex-1 items-center justify-center px-4">
+            <div className="flex items-center gap-1 xl:gap-4">
+              {t.navLinks && t.navLinks.map((link) => {
+                 const hasChildren = link?.children && link.children.length > 0;
+                 
+                 return (
+                  <div key={link.label} className="relative group">
+                    <a
+                      href={link.href ?? "#"}
+                      className="px-3 py-2 text-sm xl:text-base font-medium text-gray-300 hover:text-white transition rounded-lg hover:bg-gray-800/50 flex items-center gap-1 whitespace-nowrap"
+                    >
+                      {link.label}
+                      {hasChildren && <ChevronDown size={14} className="mt-0.5 group-hover:rotate-180 transition-transform text-gray-500 group-hover:text-emerald-400" />}
+                    </a>
 
-                {link?.children?.length > 0 && (
-                  <div className="absolute left-0 mt-3 bg-gray-800 py-3 px-4 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 min-w-[180px] space-y-2 z-[999]">
-                    {link.children.map((child) => (
-                      <a
-                        key={child.label ?? child.href ?? Math.random()}
-                        href={child?.href ?? "#"}
-                        className="block text-gray-300 hover:text-white hover:translate-x-1 transition"
-                      >
-                        {child?.label ?? child?.href ?? ""}
-                      </a>
-                    ))}
+                    {/* Dropdown Menu Desktop */}
+                    {hasChildren && (
+                      <div className="absolute left-1/2 -translate-x-1/2 mt-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-out z-50">
+                         <div className="bg-gray-900 border border-gray-800 rounded-xl shadow-2xl p-2 min-w-[200px]">
+                            <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-3 h-3 bg-gray-900 border-l border-t border-gray-800 transform rotate-45"></div>
+                            
+                            <div className="relative z-10 flex flex-col gap-1">
+                              {link.children.map((child) => (
+                                <a
+                                  key={child.label}
+                                  href={child.href}
+                                  className="block px-4 py-2.5 text-sm text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-colors text-left whitespace-nowrap"
+                                >
+                                  {child.label}
+                                </a>
+                              ))}
+                            </div>
+                         </div>
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
-            ))}
+                );
+              })}
+            </div>
+          </div>
 
-            {/* Desktop Language Toggle */}
-            <button
+          {/* 3. ZONA KANAN: Actions */}
+          <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
+             <button
               onClick={toggleLang}
-              className="text-gray-300 font-medium py-1 px-2 rounded-md hover:bg-gray-700 transition-colors"
+              className="text-xs font-medium px-2 py-1 rounded hover:bg-gray-800 text-gray-400 hover:text-white transition flex items-center gap-1"
             >
-              <span className={lang === "id" ? "text-white font-bold" : "text-gray-500"}>ID</span>
-              <span className="mx-1 text-gray-600">|</span>
-              <span className={lang === "en" ? "text-white font-bold" : "text-gray-500"}>EN</span>
+              <span className={lang === "id" ? "text-white font-bold" : ""}>ID</span>
+              <span className="opacity-30">|</span>
+              <span className={lang === "en" ? "text-white font-bold" : ""}>EN</span>
             </button>
 
-            <a
+             <a
               href="/chat"
-              className="bg-emerald-600 text-white py-2 px-5 rounded-full font-medium shadow-md shadow-green-600/30 transition-all duration-300 hover:bg-emerald-500 hover:shadow-lg hover:shadow-green-500/50 hover:-translate-y-1"
+              className="hidden xl:inline-flex bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold py-2.5 px-5 rounded-full shadow-lg shadow-emerald-900/20 transition-all hover:-translate-y-0.5 whitespace-nowrap"
             >
               {t.contactCta}
             </a>
 
             <a
               href="/cp"
-              className="bg-blue-600 text-white py-2 px-5 rounded-full font-medium shadow-md transition-all duration-300 hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/50 hover:-translate-y-1"
+              className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold py-2.5 px-5 rounded-full shadow-lg shadow-blue-900/20 transition-all hover:-translate-y-0.5 whitespace-nowrap"
             >
-              Company Profile
+              Compro
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="lg:hidden">
-            <button onClick={() => setIsMenuOpen(true)} className="text-white">
+          {/* Mobile Toggle Button */}
+          <div className="lg:hidden flex items-center">
+            <button
+              className="text-gray-300 hover:text-white p-2"
+              onClick={() => setIsMenuOpen(true)}
+            >
               <Menu size={28} />
             </button>
           </div>
         </nav>
       </header>
 
-      {/* Mobile Menu */}
+      {/* --- MOBILE MENU OVERLAY --- */}
+      <div 
+        className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] transition-opacity duration-300 lg:hidden ${isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+        onClick={() => setIsMenuOpen(false)}
+      />
+
       <div
-        className={`fixed top-0 right-0 w-3/4 max-w-sm h-full bg-gray-900 shadow-2xl z-50 transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 right-0 h-full w-[85%] max-w-sm bg-gray-950 border-l border-gray-800 shadow-2xl z-[70] transform transition-transform duration-300 ease-out lg:hidden flex flex-col ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
-        } lg:hidden`}
+        }`}
       >
-        <div className="flex justify-end p-6">
-          <button onClick={() => setIsMenuOpen(false)} className="text-white">
-            <X size={28} />
+        <div className="flex items-center justify-between p-6 border-b border-gray-800">
+           <span className="text-white font-bold text-xl tracking-wider font-exo">MENU</span>
+           <button onClick={() => setIsMenuOpen(false)} className="text-gray-400 hover:text-white transition bg-gray-900 p-2 rounded-lg">
+            <X size={24} />
           </button>
         </div>
 
-        <div className="flex flex-col items-start space-y-6 mt-6 px-6 w-full">
-          {t.navLinks.map((link) => {
-            const hasChildren = Array.isArray(link?.children) && link.children.length > 0;
+        <div className="flex-1 overflow-y-auto p-6 space-y-2">
+           {t.navLinks && t.navLinks.map((link) => {
+             const hasChildren = link?.children && link.children.length > 0;
+             const isOpen = openDropdown === link.label;
 
-            return (
-              <div key={link.label ?? link.href ?? Math.random()} className="w-full">
-                {/* If item has children -> render toggle button */}
-                {hasChildren ? (
-                  <>
-                    <button
-                      type="button"
-                      onClick={() =>
-                        setOpenDropdown(openDropdown === link.label ? null : link.label)
-                      }
-                      className="text-gray-200 text-xl w-full flex justify-between items-center"
-                    >
-                      <span>{link.label}</span>
-                      <span className="text-gray-400 text-2xl">
-                        {openDropdown === link.label ? "−" : "+"}
-                      </span>
-                    </button>
-
-                    {openDropdown === link.label && (
-                      <div className="mt-2 ml-4 space-y-2">
+             return (
+               <div key={link.label} className="border-b border-gray-800/50 last:border-0 pb-2">
+                 {hasChildren ? (
+                   <>
+                     <button
+                       onClick={() => setOpenDropdown(isOpen ? null : link.label)}
+                       className="flex items-center justify-between w-full py-3 text-lg text-gray-200 font-medium hover:text-emerald-400 transition"
+                     >
+                       {link.label}
+                       <ChevronDown size={20} className={`transition-transform duration-300 ${isOpen ? "rotate-180 text-emerald-500" : "text-gray-500"}`} />
+                     </button>
+                     <div className={`space-y-1 pl-4 border-l-2 border-gray-800 ml-1 overflow-hidden transition-all duration-300 ${isOpen ? "max-h-96 opacity-100 mb-4 pt-1" : "max-h-0 opacity-0"}`}>
                         {link.children.map((child) => (
-                          <a
-                            key={child.label ?? child.href ?? Math.random()}
-                            href={child?.href ?? "#"}
-                            target={ "_top"}
-                            className="block text-gray-400 text-lg"
-                            onClick={() => setIsMenuOpen(false)}
-                          >
-                            {child?.label ?? child?.href ?? ""}
-                          </a>
+                           <a
+                             key={child.label}
+                             href={child.href}
+                             onClick={() => setIsMenuOpen(false)}
+                             className="block py-2 text-gray-400 hover:text-white hover:translate-x-1 transition-transform"
+                           >
+                             {child.label}
+                           </a>
                         ))}
-                      </div>
-                    )}
-                  </>
-                ) : (
-                  /* If no children -> normal link (will navigate) */
-                  <a
-                    href={link?.href ?? "#"}
-                    target={ "_top" }
-                    className="text-gray-200 text-xl block w-full text-left"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {link.label}
-                  </a>
-                )}
-              </div>
-            );
-          })}
+                     </div>
+                   </>
+                 ) : (
+                   <a
+                     href={link.href}
+                     onClick={() => setIsMenuOpen(false)}
+                     className="block py-3 text-lg text-gray-200 font-medium hover:text-emerald-400 transition"
+                   >
+                     {link.label}
+                   </a>
+                 )}
+               </div>
+             )
+           })}
+        </div>
 
-          {/* CTA Buttons */}
-          <a
-            href="/chat"
-            className="bg-emerald-600 text-white py-3 px-6 rounded-full font-medium text-lg w-full text-center"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            {t.contactCta}
-          </a>
-
-          <a
-            href="/cp"
-            className="bg-blue-600 text-white py-3 px-6 rounded-full font-medium text-lg w-full text-center"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Company Profile
-          </a>
-
-          {/* Mobile Language Toggle */}
-          <button
+        <div className="p-6 border-t border-gray-800 space-y-4 bg-gray-900">
+           <button
             onClick={toggleLang}
-            className="text-gray-300 font-medium py-2 px-3 rounded-md hover:bg-gray-700 transition-colors mt-4"
+            className="flex items-center justify-center w-full py-3 border border-gray-700 rounded-xl text-gray-300 hover:bg-gray-800 transition"
           >
-            <span className={lang === "id" ? "text-white font-bold text-lg" : "text-gray-500 text-lg"}>
-              Indonesia
-            </span>
-            <span className="mx-2 text-gray-600">|</span>
-            <span className={lang === "en" ? "text-white font-bold text-lg" : "text-gray-500 text-lg"}>
-              English
-            </span>
+            <span className={lang === "id" ? "text-white font-bold" : ""}>INDONESIA</span>
+            <span className="mx-3 opacity-30">|</span>
+            <span className={lang === "en" ? "text-white font-bold" : ""}>ENGLISH</span>
           </button>
+           
+           <div className="grid grid-cols-2 gap-3">
+             <a
+              href="/chat"
+              className="flex items-center justify-center py-3 bg-emerald-600 text-white rounded-xl font-bold shadow-lg shadow-emerald-900/20 active:scale-95 transition"
+             >
+               Chat
+             </a>
+             <a
+              href="/cp"
+              className="flex items-center justify-center py-3 bg-blue-600 text-white rounded-xl font-bold shadow-lg shadow-blue-900/20 active:scale-95 transition"
+             >
+               Compro
+             </a>
+           </div>
         </div>
       </div>
     </>
