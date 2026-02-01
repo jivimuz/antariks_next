@@ -98,7 +98,7 @@ export const metadata: Metadata = {
     description: defaultDescription,
     images: [
       {
-        url: "/og.png", // bikin file ini di /public/og.png (1200x630)
+        url: "/image/banner.jpg", // bikin file ini di /public/image/banner.jpg (1200x630)
         width: 1200,
         height: 630,
         alt: "Antariks - Always be your IT solution",
@@ -111,7 +111,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: defaultTitle,
     description: defaultDescription,
-    images: ["/og.png"],
+    images: ["/image/banner.jpg"],
     // site: "@antariks", // kalau ada
     // creator: "@antariks",
   },
@@ -120,9 +120,9 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico" },
-      { url: "/icon.png", type: "image/png" },
+      { url: "/image/antariks icon.png", type: "image/png" },
     ],
-    apple: [{ url: "/image/logo.png" }],
+    apple: [{ url: "/image/antariks icon.png" }],
   },
 
   // ✅ Extra meta (optional tapi bagus)
@@ -190,10 +190,10 @@ export default function RootLayout({
                   "@type": "LocalBusiness",
                   name: "Antariks",
                   url: siteUrl,
-                  image: `${siteUrl}/og.png`,
+                  image: `${siteUrl}/image/banner.jpg`,
                   description: defaultDescription,
                   address: {
-                    "@type": "PostalAddress",
+                    "@type": "JL. GRIYA CARAKA NO.A2 KEDAWUNG",
                     addressLocality: "Cirebon",
                     addressRegion: "Jawa Barat",
                     addressCountry: "ID",
