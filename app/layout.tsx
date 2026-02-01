@@ -23,7 +23,7 @@ const siteUrl = "https://antariks.id";
 const siteName = "Antariks";
 const defaultTitle = "Antariks - Always be your IT solution";
 const defaultDescription =
-  "PT Antariks Global Technology (Antariks) adalah perusahaan teknologi yang berfokus pada solusi digital modern—mulai dari pengembangan aplikasi, sistem otomatisasi, hingga layanan AI yang scalable. Kami membantu bisnis bertransformasi lebih cepat, lebih efisien, dan lebih cerdas melalui teknologi yang dirancang dengan presisi dan pengalaman pengguna sebagai prioritas. Basecamp: Cirebon.";
+  "PT Antariks Global Technology (Antariks) adalah perusahaan teknologi yang berfokus pada solusi digital modern—mulai dari pengembangan aplikasi, sistem otomatisasi, hingga layanan AI yang scalable. Kami membantu bisnis bertransformasi lebih cepat, lebih efisien, dan lebih cerdas melalui teknologi yang dirancang dengan presisi dan pengalaman pengguna sebagai prioritas. Basecamp: Cirebon. jasa pembuatan website cirebon";
 
 // ✅ viewport terpisah di Next App Router
 export const viewport: Viewport = {
