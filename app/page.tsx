@@ -290,7 +290,7 @@ const Hero = () => {
     shadow-md shadow-red-500/30
     rotate-12
   ">
-    PROMO
+    Promo
   </span>
 
   {/* Content */}
