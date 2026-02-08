@@ -310,10 +310,10 @@ const Hero = () => {
           </a>
 
           <a
-            href="/cp"
+            href="https://saas.antariks.id"
             className="bg-blue-600 m-1 w-full text-white py-3 px-8 rounded-full text-lg font-semibold shadow-lg shadow-green-600/30 transition-all duration-300 hover:bg-blue-500 hover:shadow-xl hover:shadow-green-500/50 hover:-translate-y-1 transform"
           >
-            Company Profile
+            SAAS Product
           </a>
         </div>
      

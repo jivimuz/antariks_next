@@ -125,10 +125,10 @@ const Header = () => {
             </a>
 
             <a
-              href="/cp"
+              href="https://starter.antariks.id"
               className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold py-2.5 px-5 rounded-full shadow-lg shadow-blue-900/20 transition-all hover:-translate-y-0.5 whitespace-nowrap"
             >
-              Compro
+              PROMO
             </a>
           </div>
 
