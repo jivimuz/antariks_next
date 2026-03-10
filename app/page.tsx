@@ -207,7 +207,7 @@ const Hero = () => {
     <section
       id="home"
       // (DARI KODE ANDA) Menambahkan class parallax dan bg-cover
-      className="relative bg-cover bg-center min-h-screen flex items-center justify-center text-center overflow-hidden parallax"
+      className="relative bg-cover bg-center min-h-screen flex items-center justify-center text-center overflow-hidden parallax "
       // (DARI KODE ANDA) Menambahkan style backgroundImage
       style={{
         backgroundImage: "url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop')"
@@ -248,7 +248,7 @@ const Hero = () => {
         </span>
       </div>
 
-      <div className="relative z-10 p-6 max-w-3xl mx-auto">
+      <div className="relative z-10 p-6 max-w-3xl mx-auto  w-full">
         <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6">
           {t.hero.heading1}
           <br />

@@ -51,6 +51,7 @@ export const metadata: Metadata = {
     "Software House Indonesia",
     "Vendor Aplikasi",
     "Jasa Pembuatan Aplikasi",
+    "Jasa Pembuatan Website",
     "Jasa Website",
     "ERP",
     "MES",
